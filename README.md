@@ -36,6 +36,6 @@ Important: Both the server and the client should be running simultaneously
 4. Click on the 'Car List' button. You should see a list of the same cars seen in ** (This may take couple of seconds)
 5. Click 'Add' on the car-list page to add a car
 6. Click on the name of the car to edit the name
-7. Click on Logout to logout of the application (This should restrict you from navigating to http://localhost:4200/ car-list)
+7. Click on Logout to logout of the application (This should restrict you from navigating to http://localhost:4200/car-list)
 
 Source for code: https://developer.okta.com/blog/2017/12/04/basic-crud-angular-and-spring-boot
