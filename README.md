@@ -34,8 +34,6 @@ Important: Both the server and the client should be running simultaneously
 2. Click on the 'Login' button
 3. Enter your Okta account username and password (Once your credentials are validated, you should be redirected to the home page again)
 4. Click on the 'Car List' button. You should see a list of the same cars seen in ** (This may take couple of seconds)
-
-(OPTIONAL)
 5. Click 'Add' on the car-list page to add a car
 6. Click on the name of the car to edit the name
 7. Click on Logout to logout of the application (This should restrict you from navigating to http://localhost:4200/ car-list)
