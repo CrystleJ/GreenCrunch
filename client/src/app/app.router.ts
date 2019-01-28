@@ -18,6 +18,7 @@ export const router: Routes = [
     { path: 'home', component: HomeComponent},
     { path: 'login', component: LoginComponent},
     { path: 'signup', component: SignupComponent}
+   
     
 ]
 
