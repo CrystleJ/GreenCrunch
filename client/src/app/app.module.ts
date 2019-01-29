@@ -6,7 +6,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 
-import {RouterModule, Routes} from '@angular/router';
+// Routes
+import { routes } from './app.router';
+
 /*Okta */
 import { OktaAuthModule } from '@okta/okta-angular';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -32,10 +34,6 @@ const config = {
   clientId: '0oahconykz3JdCVDD0h7'
 };
 
-const appRoutes: Routes = [
-  { path: 'login', component: LoginComponent}
-]
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -57,13 +55,12 @@ const appRoutes: Routes = [
     MatListModule,
     MatToolbarModule,
     FormsModule,
-    // routes,
-    RouterModule.forRoot(
-      appRoutes
-    ),
+    routes,
     OktaAuthModule.initAuth(config)
   ],
-  providers: [CarService, GiphyService, {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
+  providers: [CarService, 
+    GiphyService, 
+    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

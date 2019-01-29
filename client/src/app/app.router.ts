@@ -10,14 +10,15 @@ import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 
 export const router: Routes = [
-    { path: '', redirectTo: '/home', pathMatch: 'full' },
+    { path: 'home', component: HomeComponent},
     { path: 'car-list', component: CarListComponent },
     { path: 'car-add', component: CarEditComponent },
     { path: 'car-edit/:id', component: CarEditComponent},
     { path: 'implicit/callback', component: OktaCallbackComponent },
-    { path: 'home', component: HomeComponent},
     { path: 'login', component: LoginComponent},
-    { path: 'signup', component: SignupComponent}
+    { path: 'signup', component: SignupComponent},
+
+    { path: '**', redirectTo: 'home'}
    
     
 ]
