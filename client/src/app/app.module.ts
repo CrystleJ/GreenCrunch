@@ -26,6 +26,10 @@ import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
+import { AboutComponent } from './about/about.component';
+import { TeamComponent } from './team/team.component';
+import { TransactionComponent } from './transaction/transaction.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 const config = {
@@ -43,7 +47,11 @@ const config = {
     LoginComponent,
     SignupComponent,
     NavbarComponent,
-    FooterComponent
+    FooterComponent,
+    AboutComponent,
+    TeamComponent,
+    TransactionComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,

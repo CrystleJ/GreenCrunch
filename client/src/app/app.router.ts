@@ -8,6 +8,10 @@ import { CarEditComponent } from './car-edit/car-edit.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
+import { AboutComponent } from './about/about.component';
+import { TeamComponent } from './team/team.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+
 
 export const router: Routes = [
     { path: 'home', component: HomeComponent},
@@ -17,8 +21,12 @@ export const router: Routes = [
     { path: 'implicit/callback', component: OktaCallbackComponent },
     { path: 'login', component: LoginComponent},
     { path: 'signup', component: SignupComponent},
+    {path: 'about', component: AboutComponent},
+    {path: 'team', component: TeamComponent},
+    {path: 'dashboard', component: DashboardComponent}
 
     { path: '**', redirectTo: 'home'}
+    
    
     
 ]

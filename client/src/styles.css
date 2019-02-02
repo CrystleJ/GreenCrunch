@@ -2,7 +2,7 @@
 Author: Xpeedstudio
 Author URI: http://xpeedstudio.com
 */
-    /*==========================================
+   /*==========================================
  01.  PREDIFINEED (FROM 1 TO 780 )
  02.  PRELOADER - LINE NO 786
  03.  NAVIGATION - LINE NO 930
@@ -18,10 +18,10 @@ Author URI: http://xpeedstudio.com
  13. THU SUBCRIBS - LINE NO 1935
  14. FOOTER - LINE NO 2020
 ==========================================*/
-    /* ==========================================================================
+   /* ==========================================================================
    Author's custom styles
    ========================================================================== */
-    
+   
    html,
    body {
        font-size: 14px;
@@ -2149,7 +2149,7 @@ Author URI: http://xpeedstudio.com
        nav.navbar.bootsnav.navbar-transparent.white .attr-nav>ul>li>a,
        nav.navbar.bootsnav.navbar-transparent.white ul.nav>li>a,
        nav.navbar.bootsnav.no-background.white ul.nav>li>a {
-           color: #e1e1e1;
+           color: #92981B;
        }
        nav.navbar.bootsnav.navbar-transparent.dark .attr-nav>ul>li>a,
        nav.navbar.bootsnav.navbar-transparent.dark ul.nav>li>a {
@@ -9376,7 +9376,7 @@ Author URI: http://xpeedstudio.com
    
    .panel-footer {
        padding: 10px 15px;
-       background-color: #f5f5f5;
+       background-color: black;
        border-top: 1px solid #ddd;
        border-bottom-right-radius: 3px;
        border-bottom-left-radius: 3px;
