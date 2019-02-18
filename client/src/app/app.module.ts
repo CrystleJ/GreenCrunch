@@ -6,6 +6,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 
+ 
+
 // Routes
 import { routes } from './app.router';
 
@@ -30,6 +32,7 @@ import { AboutComponent } from './about/about.component';
 import { TeamComponent } from './team/team.component';
 import { TransactionComponent } from './transaction/transaction.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+//import { Ng2GoogleChartsModule } from 'ng2-google-charts';
 
 
 const config = {
@@ -51,7 +54,9 @@ const config = {
     AboutComponent,
     TeamComponent,
     TransactionComponent,
-    DashboardComponent
+    DashboardComponent,
+    
+    
   ],
   imports: [
     BrowserModule,
@@ -64,6 +69,8 @@ const config = {
     MatToolbarModule,
     FormsModule,
     routes,
+    //Ng2GoogleChartsModule,
+    
     OktaAuthModule.initAuth(config)
   ],
   providers: [CarService, 

@@ -11,6 +11,8 @@ import { SignupComponent } from './signup/signup.component';
 import { AboutComponent } from './about/about.component';
 import { TeamComponent } from './team/team.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { TransactionComponent } from './transaction/transaction.component';
+
 
 
 export const router: Routes = [
@@ -23,7 +25,10 @@ export const router: Routes = [
     { path: 'signup', component: SignupComponent},
     {path: 'about', component: AboutComponent},
     {path: 'team', component: TeamComponent},
-    {path: 'dashboard', component: DashboardComponent}
+    {path: 'dashboard', component: DashboardComponent},
+    {path: 'transaction', component: TransactionComponent},
+    
+
 
     { path: '**', redirectTo: 'home'}
     
