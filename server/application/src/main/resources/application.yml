@@ -1,3 +1,6 @@
+server:
+  port: 8080
+
 security:
     oauth2:
         client:
@@ -9,3 +12,15 @@ security:
             user-info-uri: https://dev-872814.oktapreview.com/oauth2/default/v1/userinfo
             token-info-uri: https://dev-872814.oktapreview.com/oauth2/default/v1/introspect
             prefer-token-info: false
+
+spring:
+  datasource:
+    #SPRING_DATASOURCE_URL environment variable will be something like -> jdbc:sqlserver://MySqlServer\\MyInstance:1433;DatabaseName=MyDbName;
+    url: jdbc:mysql://localhost:3306/GreenCrunch?autoReconnect=true&useSSL=false
+    username: root
+    password: CJ_Database
+    driverClassName: com.mysql.jdbc.Driver
+  jpa:
+    hibernate.ddl-auto: update
+    generate-ddl: true
+    show-sql: true

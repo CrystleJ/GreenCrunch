@@ -5,6 +5,7 @@ import { MatButtonModule, MatCardModule, MatInputModule, MatListModule, MatToolb
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
 
  
 
@@ -19,6 +20,7 @@ import { AuthInterceptor } from './services/okta/auth.interceptor';
 /* Services */
 import { CarService } from './services/car/car.service';
 import {GiphyService} from './services/giphy/giphy.service';
+import {TransactionService} from './services/transaction/transaction.service';
 
 /* Components */
 import { CarListComponent } from './car-list/car-list.component';
@@ -71,10 +73,12 @@ const config = {
     routes,
     //Ng2GoogleChartsModule,
     
+    HttpModule,
     OktaAuthModule.initAuth(config)
   ],
   providers: [CarService, 
-    GiphyService, 
+    GiphyService,
+    TransactionService, 
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
   bootstrap: [AppComponent]
 })

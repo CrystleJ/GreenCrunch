@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-//import { GoogleChartInterface } from 'ng2-google-charts/google-charts-interfaces';
+import { Observable } from 'rxjs';
 
+import { TransactionService } from '../services/transaction/transaction.service';
+import { Transaction } from '../model/transaction';
+import { OktaAuthService } from '@okta/okta-angular';
 
 @Component({
   selector: 'app-transaction',
@@ -9,9 +12,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TransactionComponent implements OnInit {
 
-  constructor() { }
-
+  transactions: Transaction[];
+  accountNumber: Number = 84673428;
+ 
+  constructor(private transactionService: TransactionService) { }
+ 
   ngOnInit() {
+    this.reloadData();
+  }
+ 
+ 
+  reloadData() {
+    //this.customers = this.transactionService.getAll();
+    this.transactionService.getAll(this.accountNumber)
+      .subscribe(transactions => this.transactions = transactions);
+
+    console.log(this.transactions);
   }
   /*public pieChart: GoogleChartInterface = {
     chartType: 'PieChart',

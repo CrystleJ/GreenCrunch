@@ -12,7 +12,12 @@ import org.springframework.core.Ordered;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
+import org.springframework.web.context.request.RequestContextListener;
 import java.util.Collections;
+
+import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
 @EnableResourceServer
 @SpringBootApplication
@@ -22,6 +27,16 @@ public class Application {
         SpringApplication.run(Application.class, args);
     }
 
+    @Configuration
+    static class OktaOAuth2WebSecurityConfigurerAdapter extends WebSecurityConfigurerAdapter {
+
+        @Override
+        protected void configure(HttpSecurity http) throws Exception {
+            http.authorizeRequests()  
+            .anyRequest().authenticated();
+        }
+    }
+    /*
     @Bean
     ApplicationRunner init(CarRepository repository) {
         return args -> {
@@ -33,7 +48,7 @@ public class Application {
             });
             repository.findAll().forEach(System.out::println);
         };
-    }
+    }*/
 
     @Bean
     @SuppressWarnings("unchecked")
@@ -48,5 +63,10 @@ public class Application {
         FilterRegistrationBean bean = new FilterRegistrationBean(new CorsFilter(source));
         bean.setOrder(Ordered.HIGHEST_PRECEDENCE);
         return bean;
+    }
+
+    @Bean
+    public RequestContextListener requestContextListener() {
+        return new RequestContextListener();
     }
 }

@@ -62,7 +62,7 @@
                         <li><a href="#product ">Portfolio</a></li>-->
                         <li><a href="../team/">Team</a></li>
                         <!----<li><a href="#contact ">Contact</a></li>-->
-                        <li><a href='/login'>Log In</a></li>
+                        <li><a *ngIf="!isAuthenticated" (click)="oktaAuth.loginRedirect()">Log In</a></li>
                         <li><a href="/signup">Sign Up</a></li>
                         <li><a href="/dashboard">Dashboard</a></li>
                         <li><a href="/transaction">Transaction</a></li>

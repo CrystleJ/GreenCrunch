@@ -14,7 +14,6 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { TransactionComponent } from './transaction/transaction.component';
 
 
-
 export const router: Routes = [
     { path: 'home', component: HomeComponent},
     { path: 'car-list', component: CarListComponent },
@@ -27,8 +26,6 @@ export const router: Routes = [
     {path: 'team', component: TeamComponent},
     {path: 'dashboard', component: DashboardComponent},
     {path: 'transaction', component: TransactionComponent},
-    
-
 
     { path: '**', redirectTo: 'home'}
     
