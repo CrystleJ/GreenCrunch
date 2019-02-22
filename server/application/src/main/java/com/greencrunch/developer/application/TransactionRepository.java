@@ -19,6 +19,6 @@ public interface TransactionRepository extends JpaRepository<Transaction, Long> 
 	//List<Transaction> getAllTransactions(int account_number);
 
 	//@Query("SELECT t from Transactions t where t.account_number = ?1")
-	List<Transaction> findAllByBank_Acctnum(int acctnum);
+	//List<Transaction> findAllByBankfk(int bankfk);
 
 }

@@ -16,7 +16,7 @@ security:
 spring:
   datasource:
     #SPRING_DATASOURCE_URL environment variable will be something like -> jdbc:sqlserver://MySqlServer\\MyInstance:1433;DatabaseName=MyDbName;
-    url: jdbc:mysql://localhost:3306/GreenCrunch?autoReconnect=true&useSSL=false
+    url: jdbc:mysql://localhost:3306/TestGreenCrunch?autoReconnect=true&useSSL=false
     username: root
     password: CJ_Database
     driverClassName: com.mysql.jdbc.Driver

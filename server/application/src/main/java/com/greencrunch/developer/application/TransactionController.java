@@ -58,11 +58,12 @@ class TransactionController {
 		return bean;
 	}*/
 	
-    @GetMapping("transaction/all/{acctnum}")
+    @GetMapping("transaction/all/{bankfk}")
 	//@CrossOrigin(origins = "http://localhost:4200")
-    public List<Transaction> findAllByAcctnum(@PathVariable int acctnum) {
-		System.out.println("Starting to find transactions by account number: "+acctnum);
-        List<Transaction> transactions = repository.findAllByBank_Acctnum(acctnum);
+    public List<Transaction> findAllByBankfk(@PathVariable int bankfk) {
+		/*
+		System.out.println("Starting to find transactions by account number: "+bankfk);
+        List<Transaction> transactions = repository.findAllByBank_Bankfk(bankfk);
 		System.out.println("here: "+transactions);
 		System.out.println("Number of transactions: "+transactions.size());
 		for(int i =0; i < transactions.size(); i++) {
@@ -72,6 +73,17 @@ class TransactionController {
 		}
 		System.out.println("Finished finding transactions");
 		return transactions;
+		*/
+		System.out.println("Starting to find transactions by account number: "+bankfk);
+        List<Transaction> transactions = repository.findAll();
+		/*for(int i =0; i < transactions.size(); i++) {
+			System.out.println("Trying to print transaction for index: " + i);
+			System.out.println(transactions.get(i));
+			System.out.println("Hopefully printed transaction for index: " + i);
+		}*/
+		System.out.println("here: "+transactions);
+		return transactions;
+		
     }
 
     /* TODO : UPDATE TRANSACTION */

@@ -16,15 +16,17 @@ import java.util.HashSet;
 @Table(name="Bank")
 public class Bank implements Serializable{
     @Id 
-    private int acctnum;
+    private int bankfk;
     private @NonNull Double checking;
     private Double savings;
     private @NonNull Float card_number;
 
-    @OneToMany(mappedBy = "bank", cascade = CascadeType.ALL)
-    Set<Transaction> transactions = new HashSet();
+    //@OneToMany(mappedBy = "bank", cascade = CascadeType.ALL)
+    // @OneToMany(cascade = CascadeType.ALL)
+    // @JoinColumn(name = "bankfk", nullable=false)
+    // Set<Transaction> transactions = new HashSet();
 
-    @ManyToOne
-    @JoinColumn(name = "user_fk")
-    private User user;
+    // @ManyToOne
+    // @JoinColumn(name = "user_fk")
+    // private User user;
 }

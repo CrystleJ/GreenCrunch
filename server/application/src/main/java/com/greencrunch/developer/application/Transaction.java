@@ -22,6 +22,6 @@ public class Transaction implements Serializable{
     private @NonNull Date   date_time;
 
     @ManyToOne
-    @JoinColumn(name = "bank_fk")
+    @JoinColumn(name = "bankfk", nullable=false)
     private Bank bank;
 }
