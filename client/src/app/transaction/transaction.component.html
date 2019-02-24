@@ -28,12 +28,14 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th scope="row">02/10/2019</th>
-                        <td>Taco Bell</td>
-                        <td>Credit</td>
-                        <td>1.49</td>
+                    
+                    <tr *ngFor="let transaction of transactions">
+                        <th scope="row">{{transaction.date_time}}</th>
+                        <td>{{transaction.item}}</td>
+                        <td>{{transaction.type}}</td>
+                        <td>${{transaction.amount}}</td>
                     </tr>
+                    <!--
                     <tr>
                         <th scope="row">02/06/2019</th>
                         <td>Safeway</td>
@@ -45,7 +47,7 @@
                         <td>Walmart</td>
                         <td>Credit</td>
                         <td>45.60</td>
-                    </tr>
+                    </tr>-->
                 </tbody>
             </table>
         </div>

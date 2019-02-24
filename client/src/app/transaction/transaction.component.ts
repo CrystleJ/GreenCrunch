@@ -26,8 +26,6 @@ export class TransactionComponent implements OnInit {
     //this.customers = this.transactionService.getAll();
     this.transactionService.getAll(this.accountNumber)
       .subscribe(transactions => this.transactions = transactions);
-
-    console.log(this.transactions);
   }
   /*public pieChart: GoogleChartInterface = {
     chartType: 'PieChart',

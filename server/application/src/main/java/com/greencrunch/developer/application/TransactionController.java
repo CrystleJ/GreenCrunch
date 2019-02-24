@@ -20,8 +20,11 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+// import org.springframework.data.domain.Page;
+// import org.springframework.data.domain.Pageable;
  
 import com.greencrunch.developer.application.Transaction;
+import com.greencrunch.developer.application.Bank;
 import com.greencrunch.developer.application.TransactionRepository;
 
 
@@ -58,12 +61,14 @@ class TransactionController {
 		return bean;
 	}*/
 	
-    @GetMapping("transaction/all/{bankfk}")
+    @GetMapping("transaction/all/{acctnum}")
 	//@CrossOrigin(origins = "http://localhost:4200")
-    public List<Transaction> findAllByBankfk(@PathVariable int bankfk) {
-		/*
-		System.out.println("Starting to find transactions by account number: "+bankfk);
-        List<Transaction> transactions = repository.findAllByBank_Bankfk(bankfk);
+    public List<Transaction> findAllByBankfk(@PathVariable int acctnum) {
+		
+		System.out.println("Starting to find transactions by account number: "+acctnum);
+		//Bank bank = new Bank(acctnum);
+        //List<Transaction> transactions = repository.findByBankAcctnum(bank);
+		List<Transaction> transactions = repository.findByBankAcctnum(acctnum);
 		System.out.println("here: "+transactions);
 		System.out.println("Number of transactions: "+transactions.size());
 		for(int i =0; i < transactions.size(); i++) {
@@ -72,16 +77,18 @@ class TransactionController {
 			System.out.println("Hopefully printed transaction for index: " + i);
 		}
 		System.out.println("Finished finding transactions");
-		return transactions;
-		*/
+
+		/* This works
 		System.out.println("Starting to find transactions by account number: "+bankfk);
         List<Transaction> transactions = repository.findAll();
-		/*for(int i =0; i < transactions.size(); i++) {
+		for(int i =0; i < transactions.size(); i++) {
 			System.out.println("Trying to print transaction for index: " + i);
 			System.out.println(transactions.get(i));
 			System.out.println("Hopefully printed transaction for index: " + i);
-		}*/
-		System.out.println("here: "+transactions);
+		}
+		System.out.println("here: "+transactions);*/
+
+
 		return transactions;
 		
     }

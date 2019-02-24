@@ -15,10 +15,8 @@ import com.greencrunch.developer.application.Transaction;
 
 @RepositoryRestResource
 @CrossOrigin(origins = "http://localhost:4200")
-public interface TransactionRepository extends JpaRepository<Transaction, Long> {
-	//List<Transaction> getAllTransactions(int account_number);
+public interface TransactionRepository extends CrudRepository<Transaction, Integer> {
 
-	//@Query("SELECT t from Transactions t where t.account_number = ?1")
-	//List<Transaction> findAllByBankfk(int bankfk);
+	List<Transaction> findByBankAcctnum(int acctnum);
 
 }
