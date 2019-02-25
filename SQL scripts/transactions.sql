@@ -1,4 +1,4 @@
-INSERT INTO TestGreenCrunch.transaction
+INSERT INTO GreenCrunch.transaction
     (amount,category,date_time,item,type,bank_acctnum)
 VALUES
     (45.19,'Grocery','2018-12-19 10:03:42','Walmart','Credit Card',84673428),
