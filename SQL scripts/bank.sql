@@ -1,4 +1,4 @@
-INSERT INTO TestGreenCrunch.bank
+INSERT INTO GreenCrunch.bank
     (acctnum,card_number,checking,savings)
 VALUES
 	(84673428,4622343458493850,133857.87,75837.54),
