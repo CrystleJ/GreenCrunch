@@ -33,6 +33,7 @@ import { TransactionComponent } from './transaction/transaction.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { Ng2GoogleChartsModule } from 'ng2-google-charts';
 import {Ng2CarouselamosModule} from 'ng2-carouselamos';
+import { BudgetComponent } from './budget/budget.component';
 
 
 
@@ -55,7 +56,8 @@ const config = {
     AboutComponent,
     TeamComponent,
     TransactionComponent,
-    DashboardComponent
+    DashboardComponent,
+    BudgetComponent
   ],
   imports: [
     BrowserModule,
