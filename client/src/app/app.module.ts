@@ -6,9 +6,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-
- 
-
 // Routes
 import { routes } from './app.router';
 
@@ -34,7 +31,9 @@ import { AboutComponent } from './about/about.component';
 import { TeamComponent } from './team/team.component';
 import { TransactionComponent } from './transaction/transaction.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-//import { Ng2GoogleChartsModule } from 'ng2-google-charts';
+import { Ng2GoogleChartsModule } from 'ng2-google-charts';
+import {Ng2CarouselamosModule} from 'ng2-carouselamos';
+
 
 
 const config = {
@@ -56,9 +55,7 @@ const config = {
     AboutComponent,
     TeamComponent,
     TransactionComponent,
-    DashboardComponent,
-    
-    
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -71,14 +68,14 @@ const config = {
     MatToolbarModule,
     FormsModule,
     routes,
-    //Ng2GoogleChartsModule,
-    
     HttpModule,
-    OktaAuthModule.initAuth(config)
+    Ng2GoogleChartsModule,
+    OktaAuthModule.initAuth(config),
+    Ng2CarouselamosModule
   ],
-  providers: [CarService, 
+  providers: [CarService,
     GiphyService,
-    TransactionService, 
+    TransactionService,
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
   bootstrap: [AppComponent]
 })

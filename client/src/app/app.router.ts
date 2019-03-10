@@ -28,9 +28,6 @@ export const router: Routes = [
     {path: 'transaction', component: TransactionComponent},
 
     { path: '**', redirectTo: 'home'}
-    
-   
-    
 ]
 
 export const routes: ModuleWithProviders = RouterModule.forRoot(router);
