@@ -12,7 +12,7 @@
             </div>
         </div>
     </div>
-    <!--End off Preloader -->
+    <--End off Preloader -->
 
 
     <div class="culmn">
@@ -56,16 +56,14 @@
                 <!-- navbar menu -->
                 <div class="collapse navbar-collapse" id="navbar-menu">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="/home">Home</a></li>
-                        <li><a href="../about/">About</a></li>
-                        <!----<li><a href=" #business ">Service</a></li>
-                        <li><a href="#product ">Portfolio</a></li>-->
-                        <li><a href="../team/">Team</a></li>
+                        <li><a *ngIf="!givenName" href="/home">Home</a></li>
                         <!----<li><a href="#contact ">Contact</a></li>-->
-                        <li><a *ngIf="!isAuthenticated" (click)="oktaAuth.loginRedirect()">Log In</a></li>
-                        <li><a href="/signup">Sign Up</a></li>
-                        <li><a href="/dashboard">Dashboard</a></li>
-                        <li><a href="/transaction">Transaction</a></li>
+                        <li><a *ngIf="!givenName" (click)="login()">Login/Register</a>
+                        <li><a *ngIf="givenName" href="/dashboard">Dashboard</a></li>
+                        <li><a *ngIf="givenName" href="/transaction">Transaction</a></li>
+                        <li><a href="../about/">About</a></li>
+                        <li><a href="../team/">Team</a></li>
+                        <li><a *ngIf="givenName" (click)="logout()">Logout</a>
 
                     </ul>
                 </div>

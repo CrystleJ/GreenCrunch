@@ -1,4 +1,3 @@
-//package com.greencrunch.developer.application.repo;
 package com.greencrunch.developer.application;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -11,10 +10,10 @@ import java.util.List;
  
 import org.springframework.data.repository.CrudRepository;
  
-import com.greencrunch.developer.application.User;
+import com.greencrunch.developer.application.Bank;
 
 @RepositoryRestResource
 @CrossOrigin(origins = "http://localhost:4200")
-public interface UserRepository extends JpaRepository<User, String> {
-
+public interface BankRepository extends CrudRepository<Bank, Integer> {
+    
 }

@@ -1,6 +1,6 @@
 import {ModuleWithProviders} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
-import { OktaCallbackComponent} from '@okta/okta-angular';
+//mport { OktaCallbackComponent} from '@okta/okta-angular';
 
 import { AppComponent } from './app.component';
 import { CarListComponent } from './car-list/car-list.component';
@@ -12,20 +12,22 @@ import { AboutComponent } from './about/about.component';
 import { TeamComponent } from './team/team.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { TransactionComponent } from './transaction/transaction.component';
+import { NewUserComponent } from './new-user/new-user.component';
 
 
 export const router: Routes = [
     { path: 'home', component: HomeComponent},
-    { path: 'car-list', component: CarListComponent },
-    { path: 'car-add', component: CarEditComponent },
-    { path: 'car-edit/:id', component: CarEditComponent},
-    { path: 'implicit/callback', component: OktaCallbackComponent },
-    { path: 'login', component: LoginComponent},
-    { path: 'signup', component: SignupComponent},
+    // { path: 'car-list', component: CarListComponent },
+    // { path: 'car-add', component: CarEditComponent },
+    // { path: 'car-edit/:id', component: CarEditComponent},
+    //{ path: 'implicit/callback', component: OktaCallbackComponent },
+    // { path: 'login', component: LoginComponent},
+    // { path: 'signup', component: SignupComponent},
     {path: 'about', component: AboutComponent},
     {path: 'team', component: TeamComponent},
     {path: 'dashboard', component: DashboardComponent},
     {path: 'transaction', component: TransactionComponent},
+    {path: 'create-new-user', component: NewUserComponent},
 
     { path: '**', redirectTo: 'home'}
     

@@ -11,8 +11,8 @@ export class TransactionService {
   constructor(private http: HttpClient) {
   }
 
-  getAll(account_number: Number): Observable<any> {
-    return this.http.get(this.TRANSACTION_API + '/all/'+account_number);
+  getAll(user_email: String): Observable<any> {
+    return this.http.get(this.TRANSACTION_API + '/all/'+user_email);
     //return this.http.get(this.API + '/all');
   }
 

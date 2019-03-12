@@ -6,6 +6,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import java.util.Date;
 import java.util.Set;
@@ -22,8 +23,6 @@ public class Bank implements Serializable {
     private Double savings;
     private Float card_number;
 
-    //@OneToMany(cascade = CascadeType.ALL)
-    //@JoinColumn(name = "bankfk", referencedColumnName="bankfk")
     @OneToMany(mappedBy = "bank", cascade = CascadeType.ALL)
     @JsonManagedReference
     Set<Transaction> transactions = new HashSet();
@@ -32,7 +31,8 @@ public class Bank implements Serializable {
         this.acctnum = acctnum;
     }
 
-    // @ManyToOne
-    // @JoinColumn(name = "user_fk")
-    // private User user;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JsonBackReference
+    @JoinColumn(name = "user_email")
+    private User user;
 }
