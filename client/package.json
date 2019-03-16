@@ -23,17 +23,12 @@
         "@angular/platform-browser": "^5.2.0",
         "@angular/platform-browser-dynamic": "^5.2.0",
         "@angular/router": "^5.2.0",
-        "@ng-bootstrap/ng-bootstrap": "^1.0.0",
         "@okta/okta-angular": "^1.0.0",
-        "angular-fusioncharts": "^3.0.1",
-        "canvasjs": "^1.8.1",
+        "angular-oauth2-oidc": "^3.1.4",
         "core-js": "^2.4.1",
-        "fusioncharts": "^3.13.4",
-        "ng-template": "^1.0.0",
         "ng2-carouselamos": "^3.2.0",
         "ng2-google-charts": "^4.0.0",
         "rxjs": "^5.5.6",
-        "ui-carousel": "^0.2.0",
         "zone.js": "^0.8.19"
     },
     "devDependencies": {

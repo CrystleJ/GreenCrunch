@@ -3,6 +3,7 @@ package com.greencrunch.developer.application;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.HashSet;
 import java.util.Optional;
 
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
@@ -25,6 +26,7 @@ import org.springframework.web.bind.annotation.RestController;
  
 import com.greencrunch.developer.application.Transaction;
 import com.greencrunch.developer.application.Bank;
+import com.greencrunch.developer.application.UserRepository;
 import com.greencrunch.developer.application.TransactionRepository;
 
 
@@ -32,62 +34,46 @@ import com.greencrunch.developer.application.TransactionRepository;
 //@RequestMapping("/transaction")
 class TransactionController {
 
-	//private int account_number = 84673428;
-
 	@Autowired
     private TransactionRepository repository;
+	private UserRepository userRepo;
 
 	public static void main(String[] args) {
         SpringApplication.run(TransactionController.class, args);
     }
 
-    public TransactionController(TransactionRepository repository) {
+    public TransactionController(TransactionRepository repository, UserRepository userRepo) {
         this.repository = repository;
+		this.userRepo = userRepo;
     }
-
-	/*
-	@Bean
-	@SuppressWarnings("unchecked")
-	public FilterRegistrationBean simpleCorsFilter() {
-		UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-		CorsConfiguration config = new CorsConfiguration();
-		config.setAllowCredentials(true);
-		config.setAllowedOrigins(Collections.singletonList("http://localhost:4200"));
-		config.setAllowedMethods(Collections.singletonList("*"));
-		config.setAllowedHeaders(Collections.singletonList("*"));
-		source.registerCorsConfiguration("/**", config);
-		FilterRegistrationBean bean = new FilterRegistrationBean(new CorsFilter(source));
-		bean.setOrder(Ordered.HIGHEST_PRECEDENCE);
-		return bean;
-	}*/
 	
-    @GetMapping("transaction/all/{acctnum}")
+    @GetMapping("transaction/all/{email}")
 	//@CrossOrigin(origins = "http://localhost:4200")
-    public List<Transaction> findAllByBankfk(@PathVariable int acctnum) {
-		
-		System.out.println("Starting to find transactions by account number: "+acctnum);
-		//Bank bank = new Bank(acctnum);
-        //List<Transaction> transactions = repository.findByBankAcctnum(bank);
-		List<Transaction> transactions = repository.findByBankAcctnum(acctnum);
-		System.out.println("here: "+transactions);
-		System.out.println("Number of transactions: "+transactions.size());
-		for(int i =0; i < transactions.size(); i++) {
-			System.out.println("Trying to print transaction for index: " + i);
-			System.out.println(transactions.get(i));
-			System.out.println("Hopefully printed transaction for index: " + i);
-		}
-		System.out.println("Finished finding transactions");
+    public List<Transaction> findAllByBankfk(@PathVariable String email) {
 
-		/* This works
-		System.out.println("Starting to find transactions by account number: "+bankfk);
-        List<Transaction> transactions = repository.findAll();
-		for(int i =0; i < transactions.size(); i++) {
-			System.out.println("Trying to print transaction for index: " + i);
-			System.out.println(transactions.get(i));
-			System.out.println("Hopefully printed transaction for index: " + i);
-		}
-		System.out.println("here: "+transactions);*/
+		System.out.println("Finding user with email: " + email);
+        Optional<User> userOp = userRepo.findById(email);
+		List<Transaction> transactions = new ArrayList<>();
 
+		if(userOp.isPresent()) {
+			User user = userOp.get();
+			System.out.println("Found user: "+user);
+			HashSet<Bank> banks = new HashSet<>(user.getBank());
+
+			System.out.println("User's banks include: "+banks);
+			int acctnum = banks.iterator().next().getAcctnum();
+			System.out.println("Starting to find transactions by account number: "+acctnum);
+			transactions = repository.findByBankAcctnum(acctnum);
+			System.out.println("here: "+transactions);
+			System.out.println("Number of transactions: "+transactions.size());
+
+			for(int i =0; i < transactions.size(); i++) {
+				System.out.println("Trying to print transaction for index: " + i);
+				System.out.println(transactions.get(i));
+				System.out.println("Hopefully printed transaction for index: " + i);
+			}
+			System.out.println("Finished finding transactions");
+		}
 
 		return transactions;
 		
