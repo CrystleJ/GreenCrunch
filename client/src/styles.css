@@ -4576,6 +4576,11 @@ mark,
     text-transform: uppercase;
 }
 
+.text-upper {
+    text-transform: uppercase;
+    color: grey;
+}
+
 .text-capitalize {
     text-transform: capitalize;
 }

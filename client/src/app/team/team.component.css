@@ -1,14 +1,3 @@
-/*
-Tutorial Name: Meet the Team
-Description: A simple concept for members section.
-Author: Stanislav Kostadinov
-Author URI: http://stanislav.it
-Usage: You can use this code for free in personal and commercial projects if you build upon it. You are not allowed to republish, redistribute or sell "as-is". 
-*/
-
-
-/* 01. GENERAL SETTINGS ============================================ */
-
 * {
     margin: 0;
     padding: 0;
@@ -20,7 +9,7 @@ p {
 
 a {
     text-decoration: none;
-    color: #fff;
+    color: #454545;
     transition: all 0.1s ease-in;
 }
 
@@ -30,7 +19,7 @@ img {
 
 body {
     background: #fff;
-    color: #fff;
+    color: #767676;
     font-family: 'PT Sans Narrow', sans-serif;
     font-size: 13px;
     font-weight: 300;
@@ -90,14 +79,14 @@ body {
 
 #speakers {
     padding: 60px 0;
-    background: #265462;
+    background: #FAF4F2;
     /*#4593e3; */
     text-align: center;
 }
 
 #speakers p {
     padding: 20px 0 60px;
-    color: rgba(255, 255, 255, 0.85);
+    color: #767676;
     font-family: 'Open Sans', sans-serif;
     font-size: 16px;
     letter-spacing: 0.2px;
@@ -124,7 +113,7 @@ body {
     font-size: 20px;
     background: none;
     padding: 0;
-    color: #86940C;
+    color: #96AFBB;
 }
 
 #speakers img {
@@ -138,7 +127,7 @@ body {
 }
 
 #speakers img:hover {
-    border: 15px solid #86940C;
+    border: 15px solid #96AFBB;
     position: relative;
     z-index: 10;
     transition: all 0.1s ease-in;
@@ -150,9 +139,10 @@ body {
     top: -64px;
     left: -42px;
     display: inline-block;
-    background: #86940C;
+    background: #96AFBB;
     border-radius: 0 16px 16px 0;
     font-size: 16px;
+    color: white;
 }
 
 
@@ -180,7 +170,7 @@ body {
 }
 
 #speakers li a {
-    color: #717135;
+    color: #96AFBB;
     transition: all 0.1s ease-in;
 }
 

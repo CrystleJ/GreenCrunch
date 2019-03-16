@@ -1,5 +1,5 @@
-<section id="home " class="home bg-blue fix ">
-    <div class="overlay "></div>
+<section id="home " class="home bg-light-pink fix ">
+
     <div class="container ">
 
         <div class="row ">
@@ -28,7 +28,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    
+
                     <tr *ngFor="let transaction of transactions">
                         <th scope="row">{{transaction.date_time}}</th>
                         <td>{{transaction.item}}</td>
@@ -50,6 +50,16 @@
                     </tr>-->
                 </tbody>
             </table>
+
+            <div class="business_btn m-top-50 ">
+                <a href=" " class="btn btn-default m-top-20 " style="margin:0px;"> Add Transactions</a>
+
+                <a href=" " class="btn btn-default m-top-20 " style="margin:130px;"> Edit Transactions </a>
+
+                <a href=" " class="btn btn-default m-top-20 " style="margin:20px;"> Delete Transactions</a>
+
+
+            </div>
         </div>
     </div>
 </section>
