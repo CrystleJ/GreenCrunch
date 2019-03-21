@@ -37,18 +37,19 @@ class TransactionController {
 	@Autowired
     private TransactionRepository repository;
 	private UserRepository userRepo;
+	private BankRepository bankRepo;
 
 	public static void main(String[] args) {
         SpringApplication.run(TransactionController.class, args);
     }
 
-    public TransactionController(TransactionRepository repository, UserRepository userRepo) {
+    public TransactionController(TransactionRepository repository, UserRepository userRepo, BankRepository bankRepo) {
         this.repository = repository;
 		this.userRepo = userRepo;
+		this.bankRepo = bankRepo;
     }
 	
     @GetMapping("transaction/all/{email}")
-	//@CrossOrigin(origins = "http://localhost:4200")
     public List<Transaction> findAllByBankfk(@PathVariable String email) {
 
 		System.out.println("Finding user with email: " + email);
@@ -76,27 +77,59 @@ class TransactionController {
 		}
 
 		return transactions;
-		
     }
 
-    /* TODO : UPDATE TRANSACTION */
-    /*
-    @PutMapping("/transaction/{id}")
-	public ResponseEntity<Customer> updateCustomer(@PathVariable("id") long id, @RequestBody Transaction transaction) {
-		System.out.println("Update transaction with ID = " + id + "...");
- 
-		Optional<Transaction> transactionData = repository.findById(id);
- 
-		if (transactionData.isPresent()) {
-			Customer _transaction = transactionData.get();
-			_transaction.setName(transaction.getName());
-			_transaction.setAge(transaction.getAge());
-			_transaction.setActive(transaction.isActive());
-			return new ResponseEntity<>(repository.save(_transaction), HttpStatus.OK);
-		} else {
-			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-		}
-	}
-    */
+	@GetMapping("transaction/bankacct/{email}")
+    public Integer getBankAcct(@PathVariable String email) {
+		int acctnum = 0;
+		System.out.println("Finding user with email: " + email);
+        Optional<User> userOp = userRepo.findById(email);
+		List<Transaction> transactions = new ArrayList<>();
 
+		if(userOp.isPresent()) {
+			User user = userOp.get();
+			System.out.println("Found user: "+user);
+			HashSet<Bank> banks = new HashSet<>(user.getBank());
+
+			System.out.println("User's banks include: "+banks);
+			acctnum = banks.iterator().next().getAcctnum();
+			System.out.println("The account number is: "+acctnum);
+		}
+		return acctnum;
+    }
+
+	@PostMapping(value = "/transaction/add")
+    public Transaction postTransaction(@RequestBody Transaction transaction) {
+		Optional<Bank> bankOp = bankRepo.findById(transaction.getBank().getAcctnum());
+		if(bankOp.isPresent()) {
+			Bank bank = bankOp.get();
+			System.out.println("Found bank: "+bank);
+			System.out.println("Posting transaction: "+transaction);
+			Transaction _transaction;
+			_transaction = repository.save(new Transaction(transaction.getType(), transaction.getAmount(), transaction.getCategory(),transaction.getItem(),transaction.getDate_time(),bank));
+			return _transaction;
+		}
+    
+        return transaction;
+    }
+
+    @PutMapping("/transaction/update/{id}")
+    public ResponseEntity<Transaction> updateTransaction(@PathVariable("id") Integer id, @RequestBody Transaction transaction ){
+        System.out.println("Finding transaction with id: " + id);
+        Optional<Transaction> transactionOp = repository.findById(id);
+
+		if(transactionOp.isPresent()) {
+			Transaction _transaction = transactionOp.get();
+			System.out.println("Found transaction: "+_transaction);
+			_transaction.setType(transaction.getType());
+			_transaction.setAmount(transaction.getAmount());
+			_transaction.setCategory(transaction.getCategory());
+			_transaction.setItem(transaction.getItem());
+			_transaction.setDate_time(transaction.getDate_time());
+			System.out.println("Updating transaction to: "+_transaction);
+            return new ResponseEntity<>(repository.save(_transaction), HttpStatus.OK);
+        } 
+        System.out.println("Failed to find transaction with id: "+ id);
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
 }

@@ -35,4 +35,13 @@ public class Transaction implements Serializable {
         this.item = item;
         this.date_time = date_time;
     }
+
+    public Transaction(String type, Double amount, String category, String item, Date date_time, Bank bank) {
+        this.type = type;
+        this.amount = amount;
+        this.category = category;
+        this.item = item;
+        this.date_time = date_time;
+        this.bank = bank;
+    }
 }
