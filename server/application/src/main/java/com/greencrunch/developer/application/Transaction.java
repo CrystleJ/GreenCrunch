@@ -15,7 +15,7 @@ import java.util.Date;
 @ToString /// @EqualsAndHashCode <--- THIS THING CAN CAUSE THE INFINITE LOOP
 public class Transaction implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO) 
+    @GeneratedValue(strategy = GenerationType.IDENTITY) 
     private int id;
     private @NonNull String type;
     private @NonNull Double amount;

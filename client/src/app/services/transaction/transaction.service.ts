@@ -21,8 +21,8 @@ export class TransactionService {
     return this.http.put(`${this.TRANSACTION_API}/update/${id}`, transaction);
   }
 
-  createTransaction(transaction: Object): Observable<Object> {
-    return this.http.post(`${this.TRANSACTION_API}` + `/add`, transaction);
+  createTransaction(acctnum: number, transaction: Object): Observable<Object> {
+    return this.http.post(`${this.TRANSACTION_API}` + `/add/${acctnum}`, transaction);
   }
 
   getBankAcct(user_email: String): Observable<any> {

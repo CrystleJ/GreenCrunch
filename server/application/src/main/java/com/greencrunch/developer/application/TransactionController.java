@@ -98,9 +98,11 @@ class TransactionController {
 		return acctnum;
     }
 
-	@PostMapping(value = "/transaction/add")
-    public Transaction postTransaction(@RequestBody Transaction transaction) {
-		Optional<Bank> bankOp = bankRepo.findById(transaction.getBank().getAcctnum());
+	@PostMapping(value = "/transaction/add/{acctnum}")
+    public Transaction postTransaction(@PathVariable Integer acctnum, @RequestBody Transaction transaction) {
+		System.out.println("Provided with transaction: "+transaction);
+		System.out.println("Find bank: "+acctnum);
+		Optional<Bank> bankOp = bankRepo.findById(acctnum);
 		if(bankOp.isPresent()) {
 			Bank bank = bankOp.get();
 			System.out.println("Found bank: "+bank);
@@ -110,7 +112,7 @@ class TransactionController {
 			return _transaction;
 		}
     
-        return transaction;
+        return null;
     }
 
     @PutMapping("/transaction/update/{id}")

@@ -38,21 +38,11 @@ export class TransactionComponent implements OnInit {
     }
 
     this.addTransactionForm = this.fb.group({
-      'date': ['', [
-        Validators.required
-      ]],
-      'item': ['', [
-        Validators.required
-      ]],
-      'type': ['', [
-        Validators.required
-      ]],
-      'amt': ['', [
-        Validators.required
-      ]],
-      'categ': ['', [
-        Validators.required
-      ]],
+      add_date: new FormControl('', Validators.required),
+      add_item: new FormControl('', Validators.required),
+      add_type: new FormControl('', Validators.required),
+      add_amt: new FormControl('', Validators.required),
+      add_categ: new FormControl('', Validators.required)
     });
     
     this.editTransactionForm = this.fb.group({
@@ -74,11 +64,11 @@ export class TransactionComponent implements OnInit {
     });
   }
  
-  get add_date() { return this.addTransactionForm.get('date') }
-  get add_item() { return this.addTransactionForm.get('item') }
-  get add_type() { return this.addTransactionForm.get('type') }
-  get add_amount() { return this.addTransactionForm.get('amt') }
-  get add_category() { return this.addTransactionForm.get('categ') }
+  get add_date() { return this.addTransactionForm.get('add_date') }
+  get add_item() { return this.addTransactionForm.get('add_item') }
+  get add_type() { return this.addTransactionForm.get('add_type') }
+  get add_amount() { return this.addTransactionForm.get('add_amt') }
+  get add_category() { return this.addTransactionForm.get('add_categ') }
 
   get edit_date() { return this.editTransactionForm.get('date') }
   get edit_item() { return this.editTransactionForm.get('item') }
@@ -98,10 +88,11 @@ export class TransactionComponent implements OnInit {
       .subscribe(acctnum => this.acctnum = acctnum);
   }
 
-  async add() {
-    var bank = new Bank();
-    await this.getBank();
-    bank.account_number = this.acctnum;
+  add() {
+    // var bank = new Bank();
+    // bank.account_number = this.acctnum;
+
+    console.log("Trying to add new transaction for: " + this.acctnum);
 
     var transaction = new Transaction();
     transaction.date_time = this.add_date.value;
@@ -109,9 +100,12 @@ export class TransactionComponent implements OnInit {
     transaction.type = this.add_type.value;
     transaction.amount = this.add_amount.value;
     transaction.category = this.add_category.value;
-    transaction.bank = bank;
-    this.transactionService.createTransaction(transaction)
+    console.log("Adding transaction");
+    this.transactionService.createTransaction(this.acctnum, transaction)
       .subscribe(data => console.log(data), error => console.log(error));
+    
+    document.getElementById('id01').style.display='none';
+    window.location.reload(true);
   }
 
   hide(id:number) {
@@ -126,6 +120,8 @@ export class TransactionComponent implements OnInit {
     transaction.type = this.edit_type.value;
     transaction.amount = this.edit_amount.value;
     transaction.category = this.edit_category.value;
+    //this.isEdit = false;
+    console.log("Editing transaction");
     this.transactionService.updateUserTransaction(id, transaction)
     .subscribe(
       data => {
@@ -133,8 +129,7 @@ export class TransactionComponent implements OnInit {
       },
       error => console.log(error));
     
-    this.reloadData();
-    this.isEdit = false;
+    window.location.reload(true);
   }
 
   /*public pieChart: GoogleChartInterface = {
