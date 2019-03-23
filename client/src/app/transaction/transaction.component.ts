@@ -102,10 +102,12 @@ export class TransactionComponent implements OnInit {
     transaction.category = this.add_category.value;
     console.log("Adding transaction");
     this.transactionService.createTransaction(this.acctnum, transaction)
-      .subscribe(data => console.log(data), error => console.log(error));
+      .subscribe(data => {
+        console.log(data);
+        document.getElementById('id01').style.display='none';
+        window.location.reload(true);
+      }, error => console.log(error));
     
-    document.getElementById('id01').style.display='none';
-    window.location.reload(true);
   }
 
   hide(id:number) {
@@ -125,11 +127,10 @@ export class TransactionComponent implements OnInit {
     this.transactionService.updateUserTransaction(id, transaction)
     .subscribe(
       data => {
-        console.log(data);
+        console.log(data);window.location.reload(true);
       },
       error => console.log(error));
     
-    window.location.reload(true);
   }
 
   /*public pieChart: GoogleChartInterface = {
