@@ -6,9 +6,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-
- 
-
 // Routes
 import { routes } from './app.router';
 
@@ -36,6 +33,10 @@ import { AboutComponent } from './about/about.component';
 import { TeamComponent } from './team/team.component';
 import { TransactionComponent } from './transaction/transaction.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { Ng2GoogleChartsModule } from 'ng2-google-charts';
+import {Ng2CarouselamosModule} from 'ng2-carouselamos';
+import { BudgetComponent } from './budget/budget.component';
+
 import { NewUserComponent } from './new-user/new-user.component';
 //import { Ng2GoogleChartsModule } from 'ng2-google-charts';
 
@@ -61,7 +62,8 @@ import { NewUserComponent } from './new-user/new-user.component';
     TeamComponent,
     TransactionComponent,
     DashboardComponent,
-    NewUserComponent,
+    BudgetComponent,
+    NewUserComponent
     
     
   ],
@@ -76,14 +78,15 @@ import { NewUserComponent } from './new-user/new-user.component';
     MatToolbarModule,
     FormsModule,
     routes,
+    HttpModule,
+    Ng2GoogleChartsModule,
+    Ng2CarouselamosModule,
     ReactiveFormsModule,
     //Ng2GoogleChartsModule,
-    
-    HttpModule,
     //OktaAuthModule.initAuth(config),
     OAuthModule.forRoot()
   ],
-  providers: [CarService, 
+  providers: [CarService,
     GiphyService,
     TransactionService, 
     UserService,

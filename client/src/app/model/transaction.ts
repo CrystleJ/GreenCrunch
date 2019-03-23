@@ -1,3 +1,5 @@
+import { Bank } from "./bank";
+
 export class Transaction {
   id: number;
   type: String;
@@ -5,5 +7,5 @@ export class Transaction {
   category: String;
   item: String;
   date_time: Date;
-  account_number: number;
+  bank: Bank;
 }

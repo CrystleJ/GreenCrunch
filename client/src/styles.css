@@ -137,7 +137,7 @@ section {
 }
 
 .bg-primary {
-    background-color: #3f92d1;
+    background-color: #FAF4F2;
 }
 
 .bg-blue {
@@ -162,6 +162,18 @@ section {
 
 .bg-yellow {
     background-color: #FAC21A;
+}
+
+.bg-dark-pink {
+    background-color: #E9CEC8;
+}
+
+.bg-light-blue {
+    background-color: #96AFBB;
+}
+
+.bg-light-pink {
+    background-color: #FAF4F2;
 }
 
 img {
@@ -306,7 +318,7 @@ h3 span,
 h4 span,
 h5 span,
 p span {
-    color: #3f92d1;
+    color: #FAF4F2;
 }
 
 p {
@@ -410,21 +422,21 @@ ul {
     width: 85px;
     height: 2px;
     margin: 20px 0px;
-    background: #3f92d1;
+    background: #FAF4F2;
 }
 
 .separator_auto {
     width: 85px;
     height: 2px;
     margin: 20px auto;
-    background: #3f92d1;
+    background: #FAF4F2;
 }
 
 .separator_small {
     width: 30px;
     height: 2px;
     margin: 20px 0px;
-    background: #3f92d1;
+    background: #FAF4F2;
 }
 
 
@@ -443,7 +455,7 @@ ul {
 
 .btn-primary {
     color: #fff;
-    background-color: #3f92d1;
+    background-color: #FAF4F2;
     border: 1px solid;
     border-color: #3f92d1;
 }
@@ -1010,11 +1022,11 @@ textarea::-ms-input-placeholder {
 }
 
 nav.navbar.bootsnav ul.nav li.active>a {
-    color: #3f92d1;
+    color: #FAF4F2;
 }
 
 nav.navbar.bootsnav ul.nav li a:hover {
-    color: #3f92d1;
+    color: #FAF4F2;
 }
 
 .navbar-nav>li>a {
@@ -1122,13 +1134,13 @@ nav.navbar.bootsnav ul.nav li a:hover {
 }
 
 .features_item:hover .f_item_icon i {
-    background-color: #265462;
-    border-color: #2c82c9;
+    background-color: #E9CEC8;
+    border-color: #FAF4F2;
     color: #fff;
 }
 
 .features_item:hover .f_item_text h3 {
-    color: #949435;
+    color: #96AFBB;
 }
 
 
@@ -1445,7 +1457,7 @@ nav.navbar.bootsnav ul.nav li a:hover {
     height: 0;
     border-left: 15px solid transparent;
     border-right: 15px solid transparent;
-    border-top: 20px solid #3f92d1;
+    border-top: 20px solid #FAF4F2;
     left: 50%;
     top: 0%;
     z-index: 3;
@@ -2219,7 +2231,7 @@ body.on-side .wrap-sticky nav.navbar.bootsnav.sticked {
     nav.navbar.bootsnav.navbar-transparent.white .attr-nav>ul>li>a,
     nav.navbar.bootsnav.navbar-transparent.white ul.nav>li>a,
     nav.navbar.bootsnav.no-background.white ul.nav>li>a {
-        color: #92981B;
+        color: #817D7C;
     }
     nav.navbar.bootsnav.navbar-transparent.dark .attr-nav>ul>li>a,
     nav.navbar.bootsnav.navbar-transparent.dark ul.nav>li>a {
@@ -4562,6 +4574,11 @@ mark,
 
 .text-uppercase {
     text-transform: uppercase;
+}
+
+.text-upper {
+    text-transform: uppercase;
+    color: grey;
 }
 
 .text-capitalize {

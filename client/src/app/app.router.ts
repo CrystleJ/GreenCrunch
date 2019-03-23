@@ -12,6 +12,7 @@ import { AboutComponent } from './about/about.component';
 import { TeamComponent } from './team/team.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { TransactionComponent } from './transaction/transaction.component';
+import { BudgetComponent } from './budget/budget.component';
 import { NewUserComponent } from './new-user/new-user.component';
 
 
@@ -27,12 +28,10 @@ export const router: Routes = [
     {path: 'team', component: TeamComponent},
     {path: 'dashboard', component: DashboardComponent},
     {path: 'transaction', component: TransactionComponent},
+    {path: 'budget', component: BudgetComponent},
     {path: 'create-new-user', component: NewUserComponent},
 
     { path: '**', redirectTo: 'home'}
-    
-   
-    
 ]
 
 export const routes: ModuleWithProviders = RouterModule.forRoot(router);
