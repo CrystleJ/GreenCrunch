@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -48,15 +49,13 @@ class UserController {
     }
 
     @PostMapping(value = "/user/create")
-    public User postUser(@RequestBody User user) {
+    public ResponseEntity<User> postUser(@RequestBody User user) {
         System.out.println("Posting user: "+user);
         Integer creditscore = 300 + (int)(Math.random() * (850 - 300));
         System.out.println("Credit score: "+creditscore);
         User _user;
         // _user = repository.save(new User(user.getEmail(), user.getFirstname(), user.getLastname(), user.getMiddlename()));
-        _user = repository.save(new User(user.getEmail(), user.getName(), creditscore));
-    
-        return _user;
+        return new ResponseEntity<>(repository.save(new User(user.getEmail(), user.getName(), creditscore)), HttpStatus.OK);
     }
 
     @PutMapping("/user/{email}")
@@ -82,48 +81,17 @@ class UserController {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-    // class Acctnum {
-    //     private int acct_num;
+    @GetMapping("user/check/{email}")
+    @ResponseBody
+    public boolean userExists(@PathVariable String email) {
+		boolean exists = false;
+		System.out.println("Finding user with email: " + email);
+        Optional<User> userOp = repository.findById(email);
 
-    //     public void getAcctNum() {
-    //         return acct_num;
-    //     }
-
-    //     public void setAcctNum(int num) {
-    //         this.acct_num = num;
-    //     }
-    // }
-
-    /** UPDATING A USER'S INFO */
-    // @PutMapping("/user/ ")
-    // public ResponseEntity<Customer> updateUser(@PathVariable("id") long id, @RequestBody Customer customer) {
-    //     System.out.println("Update Customer with ID = " + id + "...");
-    //     Optional<Customer> customerData = repository.findById(id);
- 
-    //     if (customerData.isPresent()) {
-    //         Customer _customer = customerData.get();
-    //         _customer.setName(customer.getName());
-    //         _customer.setAge(customer.getAge());
-    //         _customer.setActive(customer.isActive());
-    //         return new ResponseEntity<>(repository.save(_customer), HttpStatus.OK);
-    //     } else {
-    //         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-    //     }
-    // }
-
-    /*
-    @RequestMapping(path="/all")
-    public List<User> findAllUsers() {
-        List<User> users = repository.findAll();
-		System.out.println("here: "+users);
-		System.out.println("Number of users: "+users.size());
-		for(int i =0; i < users.size(); i++) {
-			System.out.println("Trying to print users for index: " + i);
-			System.out.println(users.get(i));
-			System.out.println("Hopefully printed users for index: " + i);
+		if(userOp.isPresent()) {
+			exists = true;
 		}
-		System.out.println("Finished finding users");
-		return users;
-    }*/
+		return exists;
+    }
 
 }

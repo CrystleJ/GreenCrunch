@@ -22,8 +22,8 @@ export class UserService {
     return this.http.put(`${this.USER_API}/${email}`, {acctnum: num});
   }
 
-  // checkUser(email: String) {
-  //   return this.http.get(`${this.USER_API}/check/${email}`);
-  // }
+  checkUser(email: String): Observable<any>  {
+    return this.http.get(`${this.USER_API}/check/${email}`);
+  }
 
 }

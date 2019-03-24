@@ -321,6 +321,20 @@
             </div>
         </div>
 
+        <div id="myModal" class="modal">
+            <!-- Modal content -->
+            <div class="modal-content" style="width: 50%">
+                <form id="acctForm" [formGroup]="addAcctForm" (ngSubmit) = "onSubmit()">
+                <div class="form-group">
+                    <label for="acctnum" class="control-label">Enter the Account Number you would like GreenCrunch to track:</label><br>
+                    <input type="text" id="acctnum" class="form-control" formControlName='acctnum' name="acctnum" required>
+                </div>
+                <button type="submit" [disabled]="!addAcctForm.valid">Continue</button>
+                </form>
+            </div>
+        
+        </div>
+
         <!--- <div class="home_btns m-top-40 ">
                                             <a href=" " class="btn btn-primary m-top-20 ">Buy Now</a>
                                             <a href=" " class="btn btn-default m-top-20 ">Take a Tour</a>
