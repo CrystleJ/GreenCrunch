@@ -22,6 +22,12 @@ export class UserService {
     return this.http.put(`${this.USER_API}/${email}`, {acctnum: num});
   }
 
+  updateGoal(email: String, budget: Map<String, number>) : Observable<Object> {
+    console.log(budget)
+    return this.http.put(`${this.USER_API}/${email}` + `/updateGoal`, budget);
+  }
+
+
   // checkUser(email: String) {
   //   return this.http.get(`${this.USER_API}/check/${email}`);
   // }

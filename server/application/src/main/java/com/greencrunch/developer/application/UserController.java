@@ -4,6 +4,7 @@ package com.greencrunch.developer.application;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import org.json.JSONObject;
 
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
 import org.springframework.boot.SpringApplication;
@@ -30,6 +31,7 @@ import com.greencrunch.developer.application.BankRepository;
 
 import java.util.Set;
 import java.util.HashSet;
+import java.util.Map;
 
 @Controller
 class UserController {
@@ -54,7 +56,7 @@ class UserController {
         System.out.println("Credit score: "+creditscore);
         User _user;
         // _user = repository.save(new User(user.getEmail(), user.getFirstname(), user.getLastname(), user.getMiddlename()));
-        _user = repository.save(new User(user.getEmail(), user.getName(), creditscore));
+        _user = repository.save(new User(user.getEmail(), user.getName(), creditscore, null));
     
         return _user;
     }
@@ -79,6 +81,24 @@ class UserController {
             }
         } 
         System.out.println("Failed to find bank with account number: "+bank.getAcctnum());
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
+    @PutMapping(value = "/user/{email}/updateGoal")
+    public ResponseEntity<User> updateGoal(@PathVariable("email") String email, @RequestBody Map<String, Integer> budget) {
+        budget.forEach((key, value) -> System.out.println(key + ":" + value));
+		JSONObject jo = new JSONObject(budget);
+        System.out.println("Provided with budget: "+ budget.toString());
+		System.out.println("Find user: "+ email);
+		Optional<User> userOp = repository.findById(email);
+		if(userOp.isPresent()) {
+			User user = userOp.get();
+			System.out.println("Found user: "+ user);
+            user.setBudget(jo.toString());
+			System.out.println("Updated budget: "+ jo.toString());
+            return new ResponseEntity<>(repository.save(user), HttpStatus.OK);
+		}
+        System.out.println("Failed to find user with email: "+ email);
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 

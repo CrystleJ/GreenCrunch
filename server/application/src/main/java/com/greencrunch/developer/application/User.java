@@ -9,6 +9,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
 import java.util.HashSet;
+import org.json.JSONObject;
 
 import com.greencrunch.developer.application.Bank;
 
@@ -26,6 +27,7 @@ public class User implements Serializable{
     // private @NonNull String lastname;
     // private String middlename;
     private Integer creditscore;
+    private String budget;
     // private String street_address;
     // private String city_address;
     // private String state_address;
@@ -43,9 +45,11 @@ public class User implements Serializable{
     //     return firstname + " " + lastname;
     // }
 
-    public User(String email, String name, Integer creditscore) {
+    public User(String email, String name, Integer creditscore, String budget) {
         this.email = email;
         this.name = name;
         this.creditscore = creditscore;
+        this.budget = budget;
     } 
+
 }
