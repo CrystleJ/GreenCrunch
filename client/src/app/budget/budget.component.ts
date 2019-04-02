@@ -6,6 +6,7 @@ import { Transaction } from '../model/transaction';
 import { OAuthService } from 'angular-oauth2-oidc';
 import { UserService } from '../services/user/user.service';
 import { User } from '../model/user';
+import { IfObservable } from 'rxjs/observable/IfObservable';
 
 
 @Component({
@@ -17,6 +18,15 @@ export class BudgetComponent implements OnInit {
 
   user_email: String;
   transactions: Transaction[];
+  budget: String;
+  totals: Map<String, number> = new Map([
+    ["Bill&utilities", 0], 
+    ["Shopping", 0],
+    ["Food&drinks", 0], 
+    ["Groceries", 0],
+    ["Entertainment", 0], 
+    ["Misc", 0],
+  ]);
 
   constructor(private userService: UserService, 
     private transactionService: TransactionService,
@@ -31,15 +41,26 @@ export class BudgetComponent implements OnInit {
       console.log(claims);
       this.user_email = claims['email'];
       this.loadData();
-      this.getByCategory("Utilities")
+      this.getByCategory();
+      this.getBudget()
     }
   }
 
   loadData() {
     console.log("Getting user data: " + this.user_email)
-    let x = new Map<string, number>().set("bills", 1000).set("grocery", 200)
-    console.log(x)
-    this.userService.updateGoal(this.user_email, x)
+    //hardcoded values
+    var output: JSON;
+    var obj: any = 
+    {
+    "bill&utilities": 500,
+    "shopping": 500,
+    "food&drinks": 200,
+    "groceries": 200,
+    "entertainment": 100,
+    "misc": 400
+    }
+    output = <JSON>obj;
+    this.userService.updateGoal(this.user_email, output)
     .subscribe(
       data => {
         console.log(data);
@@ -47,20 +68,30 @@ export class BudgetComponent implements OnInit {
       error => console.log(error));
   }
 
-  getAllTransactions() {
+  getByCategory() {
     this.transactionService.getAll(this.user_email)
-    .subscribe(transactions => this.transactions = transactions);
-  }
+    .subscribe(transactions => { this.transactions = transactions
 
-  getByCategory(category: string){
-    this.getAllTransactions()
-    for(let i of this.transactions){
-      if(i.category == category) {
-        console.log("Getting by category")
-        console.log(i)
+      for(let i of this.transactions) {
+        var cat = this.totals.get(i.category)
+        console.log(cat)
+        if(cat != null) {
+          console.log("Getting by category")
+          console.log(i.amount)
+          this.totals.set(i.category, cat+i.amount)
+        }
+        else
+          console.log("DNE")
       }
-    }
-
+      console.log("TOTAL:")
+      console.log("Map", this.totals)
+    });
   }
 
+  getBudget(){
+    console.log("reached")
+    this.userService.getGoal(this.user_email)
+    .subscribe(budget => this.budget = budget);
+    console.log(this.budget)
+  }
 }

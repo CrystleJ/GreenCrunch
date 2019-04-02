@@ -1,8 +1,22 @@
 <br><br><br><br>
+<h2>Current spending</h2>
+<table class="table table-striped table-dark">
+  <thead>
+      <tr>
+          <th scope="col">Category</th>
+          <th scope="col">Amount</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr *ngFor="let category of totals.keys()">
+        <td> {{category}} </td>
+        <td>{{totals.get(category)}}</td>
+          
+      </tr>
+  </tbody>
+</table>
 
-<p>
-  budget works!
-</p>
+<h2>Goal initially entered by user</h2>
 
 <br><br><br><br>
 

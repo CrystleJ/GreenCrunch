@@ -85,10 +85,8 @@ class UserController {
     }
 
     @PutMapping(value = "/user/{email}/updateGoal")
-    public ResponseEntity<User> updateGoal(@PathVariable("email") String email, @RequestBody Map<String, Integer> budget) {
-        budget.forEach((key, value) -> System.out.println(key + ":" + value));
+    public ResponseEntity<User> updateGoal(@PathVariable("email") String email, @RequestBody String budget) {
 		JSONObject jo = new JSONObject(budget);
-        System.out.println("Provided with budget: "+ budget.toString());
 		System.out.println("Find user: "+ email);
 		Optional<User> userOp = repository.findById(email);
 		if(userOp.isPresent()) {
@@ -100,6 +98,22 @@ class UserController {
 		}
         System.out.println("Failed to find user with email: "+ email);
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
+    @GetMapping("/user/{email}/getGoal")
+    public String getGoal(@PathVariable String email) {
+		String goal = "";
+		System.out.println("Finding user with email: " + email);
+        System.out.println("Print this?");
+        Optional<User> userOp = repository.findById(email);
+
+		if(userOp.isPresent()) {
+			User user = userOp.get();
+			System.out.println("Found user: "+user);
+			goal = user.getBudget();
+			System.out.println("Getting goal: "+goal);
+		}
+		return goal;
     }
 
     // class Acctnum {
