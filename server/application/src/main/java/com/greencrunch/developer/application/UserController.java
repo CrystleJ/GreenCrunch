@@ -57,7 +57,7 @@ class UserController {
         System.out.println("Credit score: "+creditscore);
         User _user;
         // _user = repository.save(new User(user.getEmail(), user.getFirstname(), user.getLastname(), user.getMiddlename()));
-        return new ResponseEntity<>(repository.save(new User(user.getEmail(), user.getName(), creditscore)), HttpStatus.OK);
+        return new ResponseEntity<>(repository.save(new User(user.getEmail(), user.getName(), creditscore, null)), HttpStatus.OK);
     }
 
     @PutMapping("/user/{email}")
