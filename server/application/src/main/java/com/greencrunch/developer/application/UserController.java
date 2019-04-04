@@ -4,6 +4,7 @@ package com.greencrunch.developer.application;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import org.json.JSONObject;
 
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
 import org.springframework.boot.SpringApplication;
@@ -31,6 +32,7 @@ import com.greencrunch.developer.application.BankRepository;
 
 import java.util.Set;
 import java.util.HashSet;
+import java.util.Map;
 
 @Controller
 class UserController {
@@ -80,6 +82,41 @@ class UserController {
         System.out.println("Failed to find bank with account number: "+bank.getAcctnum());
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
+  
+    @PutMapping(value = "/user/{email}/updateGoal")
+    public ResponseEntity<User> updateGoal(@PathVariable("email") String email, @RequestBody String budget) {
+		JSONObject jo = new JSONObject(budget);
+		System.out.println("Find user: "+ email);
+		Optional<User> userOp = repository.findById(email);
+		if(userOp.isPresent()) {
+			User user = userOp.get();
+			System.out.println("Found user: "+ user);
+            user.setBudget(jo.toString());
+			System.out.println("Updated budget: "+ jo.toString());
+            return new ResponseEntity<>(repository.save(user), HttpStatus.OK);
+		}
+        System.out.println("Failed to find user with email: "+ email);
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
+    @GetMapping("/user/{email}/getGoal")
+    public String getGoal(@PathVariable String email) {
+		String goal = "";
+		System.out.println("Finding user with email: " + email);
+        System.out.println("Print this?");
+        Optional<User> userOp = repository.findById(email);
+
+		if(userOp.isPresent()) {
+			User user = userOp.get();
+			System.out.println("Found user: "+user);
+			goal = user.getBudget();
+			System.out.println("Getting goal: "+goal);
+		}
+		return goal;
+    }
+
+    // class Acctnum {
+    //     private int acct_num;
 
     @GetMapping("user/check/{email}")
     @ResponseBody
