@@ -8,9 +8,9 @@
             <div class="navbar">
 
                 <div class="dropdown">
-                    <button class="dropbtn">Category 
-                            <i class="fa fa-caret-down"></i>
-                          </button>
+                    <button class="dropbtn">Category
+            <i class="fa fa-caret-down"></i>
+          </button>
                     <div class="dropdown-content">
                         <a href="#">Link 1</a>
                         <a href="#">Link 2</a>
@@ -26,31 +26,33 @@
                         <th scope="col">Payment Type</th>
                         <th scope="col">Amount</th>
                         <th scope="col">Category</th>
+
                         <th></th>
                     </tr>
                 </thead>
                 <tbody>
 
                     <tr *ngFor="let transaction of transactions">
-                        
+
                         <td *ngIf="!isEdit || checkID != transaction.id" scope="row">{{transaction.date_time}}</td>
                         <td *ngIf="!isEdit || checkID != transaction.id">{{transaction.item}}</td>
                         <td *ngIf="!isEdit || checkID != transaction.id">{{transaction.type}}</td>
                         <td *ngIf="!isEdit || checkID != transaction.id">${{transaction.amount}}</td>
                         <td *ngIf="!isEdit || checkID != transaction.id">{{transaction.category}}</td>
                         <td *ngIf="!isEdit || checkID != transaction.id">
-                            <button (click)="isEdit=true;checkID=transaction.id;" class="btn btn-default" style="margin-right:30px; width: 40px; height: 40px; text-align: center;"><i class="fa fa-pencil"></i></button>
+                            <button (click)="isEdit=true;checkID=transaction.id;" class="btn btn-default" style="margin-right:30px; width: 40px; height: 40px; text-align: center;"><i
+                  class="fa fa-pencil"></i></button>
                             <button (click)="hide(transaction.id)" class="btn btn-default" style="width: 40px; height: 40px; align-content: center;"><i class="fa fa-eye-slash"></i></button>
                         </td>
                         <!-- EDIT -->
                         <th *ngIf="isEdit && checkID == transaction.id" scope="row" colspan="5">
-                            <form [formGroup]="editTransactionForm" (ngSubmit) = "edit(transaction.id)">
+                            <form [formGroup]="editTransactionForm" (ngSubmit)="edit(transaction.id)">
                                 <input style="float:left; width: 33%;" formControlName='date' name="add_date" type="date" placeholder="{{transaction.date_time}}" [(ngModel)]="transaction.date_time">
                                 <input style="float:left; width: 19%;" formControlName='item' name="item" type="text" placeholder="{{transaction.item}}" [(ngModel)]="transaction.item">
                                 <input style="float:left; width: 25%;" formControlName='type' name="type" type="text" placeholder="{{transaction.type}}" [(ngModel)]="transaction.type">
                                 <input style="float:left; width: 11%;" formControlName='amt' name="amt" type="number" placeholder="{{transaction.amount}}" [(ngModel)]="transaction.amount">
                                 <input style="float:left; width: 12%" formControlName='categ' name="categ" type="text" placeholder="{{transaction.category}}" [(ngModel)]="transaction.category">
-                                <div style="margin-left: 50%"> 
+                                <div style="margin-left: 50%">
                                     <button type="submit" [disabled]="!editTransactionForm.valid" class="btn btn-default" style="margin-right:30px; width: 60px; height: 40px; text-align: center;">Save</button>
                                     <button (click)="isEdit = false; checkID = null;" class="btn btn-default" style="margin-right:30px; width: 80px; height: 40px; text-align: center;">Cancel</button>
                                 </div>
@@ -68,7 +70,7 @@
 
 
                 <div id="id01" class="modal">
-                    <form class="modal-content" [formGroup]="addTransactionForm" (ngSubmit) = "add()">
+                    <form class="modal-content" [formGroup]="addTransactionForm" (ngSubmit)="add()">
                         <div class="form-group container">
                             <h1>Add Transaction</h1>
                             <p>Please fill in this form to add transaction</p>
@@ -82,14 +84,25 @@
                             <label for="type" class="control-label"><b>Payment Type</b></label>
                             <input type="text" placeholder="Enter Account" class="form-control" formControlName='add_type' name="add_type" required>
 
-                            <label for="amt" class="control-label"><b>Amount</b></label>
-                            $<input type="number" placeholder="Enter Amount" class="form-control" formControlName='add_amt' name="add_amt" required>
+                            <label for="amt" class="control-label"><b>Amount</b></label> $
+                            <input type="number" placeholder="Enter Amount" class="form-control" formControlName='add_amt' name="add_amt" required>
 
-                            <label for="categ" class="control-label"><b>Category</b></label>
-                            <input type="text" placeholder="Enter Account" class="form-control" formControlName='add_categ' name="add_categ" required>
-
-
-
+                            <!----<input type="text" placeholder="Enter Account" class="form-control" formControlName='add_categ' name="add_categ" required>-->
+                            <div ng-controller="MyCtrl">
+                                <div>
+                                    <label>Category </label>
+                                    <br>
+                                    <select ng-model="params.name">
+                    <option value="pa"></option>
+                    <option value="ws">Bills/Utilities</option>
+                    <option value="pn">Shopping</option>
+                    <option value="ws">Food/Drinks</option>
+                    <option value="pn">Groceries</option>
+                    <option value="ws">Entertainment</option>
+                    <option value="pn">Misc</option>
+                  </select>
+                                </div>
+                            </div>
                             <div class="clearfix">
                                 <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
                                 <button type="submit" [disabled]="!addTransactionForm.valid" class="signupbtn">Add</button>
