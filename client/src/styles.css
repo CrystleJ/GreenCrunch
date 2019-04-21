@@ -184,6 +184,9 @@ section {
 .bg-light-pink {
     background-color: #FAF4F2;
 }
+.bg-light-green {
+    background-color: #B3DACA;
+}
 
 img {
     -moz-user-select: none;
