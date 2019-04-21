@@ -188,6 +188,10 @@ section {
     background-color: #B3DACA;
 }
 
+.bg-light-purple {
+    background-color: #F2E4F6;
+}
+
 img {
     -moz-user-select: none;
     -webkit-user-select: none;
