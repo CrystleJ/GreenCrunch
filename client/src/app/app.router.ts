@@ -6,7 +6,7 @@ import { TeamComponent } from './team/team.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { TransactionComponent } from './transaction/transaction.component';
 import { BudgetComponent } from './budget/budget.component';
-
+import { ArticlesComponent } from './articles/articles.component';
 export const router: Routes = [
     { path: 'home', component: HomeComponent},
     //{ path: 'implicit/callback', component: OktaCallbackComponent },
@@ -15,6 +15,8 @@ export const router: Routes = [
     {path: 'dashboard', component: DashboardComponent},
     {path: 'transaction', component: TransactionComponent},
     {path: 'budget', component: BudgetComponent},
+    {path: 'articles', component: ArticlesComponent},
+
 
     { path: '**', redirectTo: 'home'}
 ]

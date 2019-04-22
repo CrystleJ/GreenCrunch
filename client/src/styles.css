@@ -117,6 +117,15 @@ section {
     ;
 }
 
+.text-grey {
+    color: #757373 !important;;
+    ;
+}
+.text-light-grey {
+    color: #AD9E9E !important;;
+    ;
+}
+
 .text-black {
     color: #000 !important;
 }
@@ -174,6 +183,13 @@ section {
 
 .bg-light-pink {
     background-color: #FAF4F2;
+}
+.bg-light-green {
+    background-color: #B3DACA;
+}
+
+.bg-light-purple {
+    background-color: #F2E4F6;
 }
 
 img {
@@ -515,6 +531,9 @@ ul {
 
 .m-l-15 {
     margin-left: 15px;
+}
+.m-l-50 {
+    margin-left: 50px;
 }
 
 .m-top-10 {
@@ -4756,8 +4775,9 @@ abbr[data-original-title] {
 }
 
 .initialism {
-    font-size: 90%;
+    font-size: 190%;
     text-transform: uppercase;
+    
 }
 
 blockquote {
