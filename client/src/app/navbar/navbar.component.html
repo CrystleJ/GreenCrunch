@@ -34,11 +34,11 @@
 
 
             <div class="container">
-                <div class="attr-nav">
+                <!-- <div class="attr-nav">
                     <ul>
                         <li class="search"><a href="#"><i class="fa fa-search"></i></a></li>
                     </ul>
-                </div>
+                </div> -->
 
                 <!-- Start Header Navigation -->
                 <div class="navbar-header">
@@ -58,7 +58,7 @@
                     <ul class="nav navbar-nav navbar-right">
                         <li><a *ngIf="!givenName" href="/home">Home</a></li>
                         <!----<li><a href="#contact ">Contact</a></li>-->
-                        <li><a *ngIf="!givenName" (click)="login()">Login/Register</a>
+                        <li><a *ngIf="!givenName" (click)="login()" style="cursor: pointer;">Login/Register</a>
                         <li><a *ngIf="givenName" href="/dashboard">Dashboard</a></li>
                         <li><a *ngIf="givenName" href="/transaction">Transaction</a></li>
                          <li><a *ngIf="givenName" href="/budget">Budgets</a></li>
