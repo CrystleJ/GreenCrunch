@@ -115,20 +115,37 @@ class UserController {
 		return goal;
     }
 
-    // class Acctnum {
-    //     private int acct_num;
-
     @GetMapping("user/check/{email}")
     @ResponseBody
     public boolean userExists(@PathVariable String email) {
 		boolean exists = false;
+        System.out.println("Checking if user exists");
 		System.out.println("Finding user with email: " + email);
         Optional<User> userOp = repository.findById(email);
 
 		if(userOp.isPresent()) {
 			exists = true;
 		}
+        System.out.println("User exists :"+exists);
 		return exists;
+    }
+
+    @GetMapping("user/creditscore/{email}")
+    public ResponseEntity<Integer> getCreditScore(@PathVariable String email) {
+		int creditscore = 0;
+        System.out.println("Trying to retrieve the user's credit score");
+		System.out.println("Finding user with email: " + email);
+        Optional<User> userOp = repository.findById(email);
+
+		if(userOp.isPresent()) {
+			User user = userOp.get();
+			System.out.println("Found user: "+user);
+            creditscore = user.getCreditscore();
+			System.out.println("The credit score is: "+creditscore);
+            return new ResponseEntity<>(creditscore, HttpStatus.OK);
+		}
+		System.out.println("User not found");
+		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
 }

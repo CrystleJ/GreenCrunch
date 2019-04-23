@@ -147,7 +147,7 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let category of totals.keys()">
+        <tr ngForOf="let category of totals.keys()">
             <td> {{category}} </td>
             <td>{{totals.get(category)}}</td>
 
@@ -165,45 +165,60 @@
 
 
 <div class="business_btn m-top-50 ">
-    <button class="btn btn-default m-top-20 " style="margin:0px;" onclick="document.getElementById('id01').style.display='block'"> Create a Goal</button>
+    <button class="btn btn-default m-top-20 " style="margin:0px;" onclick="document.getElementById('id01').style.display='block'"> Edit Goal</button>
 
 
 
     <div id="id01" class="modal">
-        <form class="modal-content" [formGroup]="addGoalForm" (ngSubmit)="add()">
-            <div class="form-group container">
-                <h1>Create a Goal</h1>
-                <h1>Please fill in this form to create a goal</h1>
+        <form class="modal-content" [formGroup]="editGoalForm" (ngSubmit)="editGoal()">
+            <div class="form-group container" style="padding-left: 30%;">
+                <h1 style="color:black">Edit Your Goal</h1>
+                <h4 style="color:grey">Please fill in this form to edit your goal</h4>
                 <hr>
-                <label for="date" class="control-label"><b>Date</b></label><br>
-                <input type="date" placeholder="Enter Date" formControlName='add_date' name="add_date" class="form-control" required>
+                <tbody>
+    
+                    <tr>
+                        <td><label for="bills" class="control-label"><b>Bills/Utilities</b></label></td>
+                        <td><input type="number" placeholder="Enter Amount" formControlName='bills' name="bills" class="form-control goal" required></td>
+                    </tr>
 
-                <label for="item" class="control-label"><b>Desired Monthly Savings</b></label>
-                <input type="number" placeholder="Enter savings" class="form-control" formControlName='add_item' name="add_item" required>
+                    <tr>
+                        <td><label for="shopping" class="control-label"><b>Shopping</b></label></td>
+                        <td>
+                            <input type="number" placeholder="Enter Amount" class="form-control goal" formControlName='shopping' name="shopping" required>
+                        </td>
+                    </tr>
 
-                <label for="type" class="control-label"><b>Desired Monthly Expenditures</b></label>
-                <input type="number" placeholder="Enter expenditures" class="form-control" formControlName='add_type' name="add_type" required>
+                    <tr>
+                        <td><label for="food" class="control-label"><b>Food/Drinks</b></label></td>
+                        <td>
+                            <input type="number" placeholder="Enter Amount" class="form-control goal" formControlName='food' name="food" required>
+                        </td>
+                    </tr>
 
-                <div ng-controller="MyCtrl">
-                    <div>
-                        <label>Category </label>
-                        <br>
-                        <select ng-model="params.name">
-              <option value="pa"></option>
-              <option value="ws">Bills/Utilities</option>
-              <option value="pn">Shopping</option>
-              <option value="ws">Food/Drinks</option>
-              <option value="pn">Groceries</option>
-              <option value="ws">Entertainment</option>
-              <option value="pn">Misc</option>
-            </select>
-                    </div>
-                </div>
+                    <tr>
+                        <td><label for="groceries" class="control-label"><b>Groceries</b></label></td>
+                        <td>
+                            <input type="number" placeholder="Enter Amount" class="form-control goal" formControlName='groceries' name="groceries" required>
+                        </td>
+                    </tr>
 
+                    <tr>
+                        <td><label for="entertainment" class="control-label"><b>Entertainment</b></label></td>
+                        <td>
+                            <input type="number" placeholder="Enter Amount" class="form-control goal" formControlName='entertainment' name="entertainment" required>
+                        </td>
+                    </tr>
 
+                    <tr>
+                        <td><label for="misc" class="control-label"><b>Misc</b></label></td>
+                        <td>
+                            <input type="number" placeholder="Enter Amount" class="form-control goal" formControlName='misc' name="misc" required>
+                        </td>
+                    </tr>
                 <div class="clearfix">
                     <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-                    <button type="submit" [disabled]="!addGoalForm.valid" class="signupbtn">Add</button>
+                    <button type="submit" [disabled]="!editGoalForm.valid" class="signupbtn">Add</button>
                 </div>
             </div>
         </form>

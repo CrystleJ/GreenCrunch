@@ -11,6 +11,9 @@
     display: none;
 }
 
+td {
+    width: 250px;
+}
 
 /* The Modal (background) */
 
@@ -52,16 +55,16 @@ table {
     width: 100%;
 }
 
-td,
+/* td,
 th {
     border: 1px solid #dddddd;
     text-align: left;
     padding: 8px;
-}
+} */
 
-tr:nth-child(even) {
+/* tr:nth-child(even) {
     background-color: #dddddd;
-}
+} */
 
 html,
 body {
@@ -1042,7 +1045,7 @@ div {
 Css orignal https://codepen.io/jlalovi/details/bIyAr
 ************************/
 
-@import url(https://fonts.googleapis.com/css?family=Ubuntu:400,700);
+/* @import url(https://fonts.googleapis.com/css?family=Ubuntu:400,700); */
 * {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;

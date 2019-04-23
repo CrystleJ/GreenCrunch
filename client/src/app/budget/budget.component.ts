@@ -18,6 +18,7 @@ export class BudgetComponent implements OnInit {
 
   user_email: String;
   transactions: Transaction[];
+  editGoalForm: FormGroup;
   budget: String;
   totals: Map<String, number> = new Map([
     ["Bill&utilities", 0], 
@@ -33,7 +34,15 @@ export class BudgetComponent implements OnInit {
     private oauthService: OAuthService, 
     private fb: FormBuilder) { }
 
-  ngOnInit() { 
+  ngOnInit() {
+    this.editGoalForm = this.fb.group({
+      bills: new FormControl("", Validators.required),
+      shopping: new FormControl("", Validators.required),
+      food: new FormControl("", Validators.required),
+      groceries: new FormControl("", Validators.required),
+      entertainment: new FormControl("", Validators.required),
+      misc: new FormControl("", Validators.required)
+    }); 
     const claims = this.oauthService.getIdentityClaims();
     if (!claims) {
       alert('An error occured');
@@ -44,6 +53,45 @@ export class BudgetComponent implements OnInit {
       this.getByCategory();
       this.getBudget()
     }
+  }
+
+  get bills() {
+    return this.editGoalForm.get("bills");
+  }
+  get shopping() {
+    return this.editGoalForm.get("shopping");
+  }
+  get food() {
+    return this.editGoalForm.get("food");
+  }
+  get groceries() {
+    return this.editGoalForm.get("groceries");
+  }
+  get entertainment() {
+    return this.editGoalForm.get("entertainment");
+  }
+  get misc() {
+    return this.editGoalForm.get("misc");
+  }
+
+  editGoal() {
+    const newGoal: any = {
+      "bill&utilities": this.bills.value,
+      "shopping": this.shopping.value,
+      "food&drinks": this.food.value,
+      "groceries": this.groceries.value,
+      "entertainment": this.entertainment.value,
+      "misc": this.misc.value 
+    };
+    var output:JSON = <JSON>newGoal;
+    console.log(output);
+    // this.userService.updateGoal(this.user_email, output)
+    // .subscribe(
+    //   data => {
+    //     console.log(data);
+    //   },
+    //   error => console.log(error));
+    
   }
 
   loadData() {
@@ -94,4 +142,5 @@ export class BudgetComponent implements OnInit {
     .subscribe(budget => this.budget = budget);
     console.log(this.budget)
   }
+
 }
