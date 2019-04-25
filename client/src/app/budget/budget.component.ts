@@ -135,12 +135,13 @@ export class BudgetComponent implements OnInit {
       console.log("Map", this.totals)
     });
   }
-
+  
   getBudget(){
     console.log("reached")
     this.userService.getGoal(this.user_email)
-    .subscribe(budget => this.budget = budget);
-    console.log(this.budget)
+    .subscribe(budget => {this.budget = budget;
+                        console.log(this.budget);}
+              );
   }
 
 }
