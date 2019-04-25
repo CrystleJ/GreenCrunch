@@ -99,8 +99,8 @@ class UserController {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-    @GetMapping("/user/{email}/getGoal")
-    public String getGoal(@PathVariable String email) {
+    @GetMapping("user/getGoal/{email}")
+    public ResponseEntity<String> getGoal(@PathVariable String email) {
 		String goal = "";
 		System.out.println("Finding user with email: " + email);
         System.out.println("Print this?");
@@ -111,8 +111,10 @@ class UserController {
 			System.out.println("Found user: "+user);
 			goal = user.getBudget();
 			System.out.println("Getting goal: "+goal);
+            return new ResponseEntity<>(goal, HttpStatus.OK);
 		}
-		return goal;
+        System.out.println("User not found");
+		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
     @GetMapping("user/check/{email}")

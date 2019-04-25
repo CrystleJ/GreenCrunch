@@ -31,7 +31,7 @@ export class UserService {
   }
 
   getGoal(email: String) : Observable<any>{
-    return this.http.get(`${this.USER_API}/${email}/getGoal`);
+    return this.http.get(`${this.USER_API}/getGoal/${email}`);
   }
 
   getCreditScore(email: String) : Observable<any>{
