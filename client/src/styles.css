@@ -1074,6 +1074,7 @@ nav.navbar.bootsnav ul.nav li a:hover {
     position: relative;
     padding-top: 300px;
     width: 100%;
+    padding-bottom: 100px;
 }
 
 .main_home .home_text h2 {

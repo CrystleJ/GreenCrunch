@@ -5,9 +5,7 @@ import { TransactionService } from '../services/transaction/transaction.service'
 import { Transaction } from '../model/transaction';
 import { OAuthService } from 'angular-oauth2-oidc';
 import { UserService } from '../services/user/user.service';
-import { User } from '../model/user';
-import { IfObservable } from 'rxjs/observable/IfObservable';
-
+import { Budget } from '../model/budget';
 
 @Component({
   selector: 'app-budget',
@@ -19,15 +17,22 @@ export class BudgetComponent implements OnInit {
   user_email: String;
   transactions: Transaction[];
   editGoalForm: FormGroup;
-  budget: String;
-  totals: Map<String, number> = new Map([
-    ["Bill&utilities", 0], 
-    ["Shopping", 0],
-    ["Food&drinks", 0], 
-    ["Groceries", 0],
-    ["Entertainment", 0], 
-    ["Misc", 0],
-  ]);
+  budget: any;
+  current: Map<String, Budget> = new Map([
+    ["Bill&utilities", {amount: 0, percent: 0, name: "Bill&utilities", class: "bar primary"}], 
+    ["Shopping", {amount: 0, percent: 0, name: "Shopping", class: "bar secondary"}],
+    ["Food&drinks", {amount: 0, percent: 0, name: "Food&drinks", class: "bar success"}], 
+    ["Groceries", {amount: 0, percent: 0, name: "Groceries", class: "bar warning"}],
+    ["Entertainment", {amount: 0, percent: 0, name: "Entertainment", class: "bar alert"}], 
+    ["Misc", {amount: 0, percent: 0, name: "Misc", class: "bar primary"}],]);
+
+  goals:  Map<String, Budget> = new Map([
+    ["Bill&utilities", {amount: 0, percent: 0, name: "Bill&utilities", class: "bar primary"}], 
+    ["Shopping", {amount: 0, percent: 0, name: "Shopping", class: "bar secondary"}],
+    ["Food&drinks", {amount: 0, percent: 0, name: "Food&drinks", class: "bar success"}], 
+    ["Groceries", {amount: 0, percent: 0, name: "Groceries", class: "bar warning"}],
+    ["Entertainment", {amount: 0, percent: 0, name: "Entertainment", class: "bar alert"}], 
+    ["Misc", {amount: 0, percent: 0, name: "Misc", class: "bar primary"}],]);
 
   constructor(private userService: UserService, 
     private transactionService: TransactionService,
@@ -36,12 +41,12 @@ export class BudgetComponent implements OnInit {
 
   ngOnInit() {
     this.editGoalForm = this.fb.group({
-      bills: new FormControl("", Validators.required),
-      shopping: new FormControl("", Validators.required),
-      food: new FormControl("", Validators.required),
-      groceries: new FormControl("", Validators.required),
-      entertainment: new FormControl("", Validators.required),
-      misc: new FormControl("", Validators.required)
+      'Bill&utilities': new FormControl("", Validators.required),
+      'Shopping': new FormControl("", Validators.required),
+      'Food&drinks': new FormControl("", Validators.required),
+      'Groceries': new FormControl("", Validators.required),
+      'Entertainment': new FormControl("", Validators.required),
+      'Misc': new FormControl("", Validators.required)
     }); 
     const claims = this.oauthService.getIdentityClaims();
     if (!claims) {
@@ -49,29 +54,29 @@ export class BudgetComponent implements OnInit {
     } else {
       console.log(claims);
       this.user_email = claims['email'];
-      this.loadData();
+      // this.loadData();
       this.getByCategory();
       this.getBudget()
     }
   }
 
   get bills() {
-    return this.editGoalForm.get("bills");
+    return this.editGoalForm.get("Bill&utilities");
   }
   get shopping() {
-    return this.editGoalForm.get("shopping");
+    return this.editGoalForm.get("Shopping");
   }
   get food() {
-    return this.editGoalForm.get("food");
+    return this.editGoalForm.get("Food&drinks");
   }
   get groceries() {
-    return this.editGoalForm.get("groceries");
+    return this.editGoalForm.get("Groceries");
   }
   get entertainment() {
-    return this.editGoalForm.get("entertainment");
+    return this.editGoalForm.get("Entertainment");
   }
   get misc() {
-    return this.editGoalForm.get("misc");
+    return this.editGoalForm.get("Misc");
   }
 
   editGoal() {
@@ -85,12 +90,12 @@ export class BudgetComponent implements OnInit {
     };
     var output:JSON = <JSON>newGoal;
     console.log(output);
-    // this.userService.updateGoal(this.user_email, output)
-    // .subscribe(
-    //   data => {
-    //     console.log(data);
-    //   },
-    //   error => console.log(error));
+    this.userService.updateGoal(this.user_email, output)
+    .subscribe(
+      data => {
+        window.location.reload(true);
+      },
+      error => console.log(error));
     
   }
 
@@ -119,29 +124,67 @@ export class BudgetComponent implements OnInit {
   getByCategory() {
     this.transactionService.getAll(this.user_email)
     .subscribe(transactions => { this.transactions = transactions
-
+      var total = 0;
       for(let i of this.transactions) {
-        var cat = this.totals.get(i.category)
-        console.log(cat)
+        var cat = this.current.get(i.category).amount;
+        // console.log(cat);
         if(cat != null) {
-          console.log("Getting by category")
-          console.log(i.amount)
-          this.totals.set(i.category, cat+i.amount)
+          // console.log("Getting by category")
+          // console.log(i.amount)
+
+          var curr = this.current.get(i.category);
+          curr.amount = cat+i.amount;
+          // curr.name = i.category;
+          // curr.percent = 0;
+          // curr.class = this.classes.get(i.category);
+          this.current.set(i.category,curr);
+          total += i.amount;
         }
         else
-          console.log("DNE")
+          console.log("current DNE")
       }
-      console.log("TOTAL:")
-      console.log("Map", this.totals)
+      this.current.forEach((value: Budget, key: string) => {
+        value.percent = Math.round((value.amount/total)*100);
+        this.current.set(key, value);
+      });
+      console.log('current');
+      console.log(this.current);
     });
   }
   
   getBudget(){
     console.log("reached")
     this.userService.getGoal(this.user_email)
-    .subscribe(budget => {this.budget = budget;
-                        console.log(this.budget);}
-              );
+    .subscribe(budget => 
+      {
+        this.budget = new Map<String,Number>(Object.entries(budget));
+        var total = 0;
+        this.budget.forEach((value: number, key: string) => {
+        // for(let i of this.budget) {
+          key = key.charAt(0).toUpperCase() + key.slice(1);
+          var goal = this.goals.get(key);
+          goal.amount = value;
+          this.goals.set(key,goal);
+          total += value;
+        });
+        console.log("total",total);
+        this.goals.forEach((value: Budget, key: string) => {
+          var percent = (value.amount/total)*100;
+          value.percent = Math.round(percent);
+          this.goals.set(key, value);
+        });
+        console.log('goals');
+        console.log(this.goals);
+
+      });
+  }
+
+  getCurrent(): Array<Budget> {
+    return Array.from(this.current.values());
+  }
+
+  getGoals(): Array<Budget> {
+    return Array.from(this.goals.values());
   }
 
 }

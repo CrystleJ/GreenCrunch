@@ -7,15 +7,16 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { TransactionComponent } from './transaction/transaction.component';
 import { BudgetComponent } from './budget/budget.component';
 import { ArticlesComponent } from './articles/articles.component';
+import {AuthGuard} from './services/okta/authguard';
+
 export const router: Routes = [
-    { path: 'home', component: HomeComponent},
-    //{ path: 'implicit/callback', component: OktaCallbackComponent },
+    {path: 'home', component: HomeComponent},
     {path: 'about', component: AboutComponent},
     {path: 'team', component: TeamComponent},
-    {path: 'dashboard', component: DashboardComponent},
-    {path: 'transaction', component: TransactionComponent},
-    {path: 'budget', component: BudgetComponent},
-    {path: 'articles', component: ArticlesComponent},
+    {path: 'dashboard', component: DashboardComponent,  canActivate: [AuthGuard]},
+    {path: 'transaction', component: TransactionComponent,  canActivate: [AuthGuard]},
+    {path: 'budget', component: BudgetComponent,  canActivate: [AuthGuard]},
+    {path: 'articles', component: ArticlesComponent,  canActivate: [AuthGuard]},
 
 
     { path: '**', redirectTo: 'home'}

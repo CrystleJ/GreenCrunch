@@ -10,7 +10,6 @@ import { HttpModule } from '@angular/http';
 import { routes } from './app.router';
 
 /*Okta */
-//import { OktaAuthModule } from '@okta/okta-angular';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './services/okta/auth.interceptor';
 import { OAuthModule } from 'angular-oauth2-oidc';
@@ -25,27 +24,16 @@ import {UserService} from './services/user/user.service';
 import { CarListComponent } from './car-list/car-list.component';
 import { CarEditComponent } from './car-edit/car-edit.component';
 import { HomeComponent } from './home/home.component';
-import { LoginComponent } from './login/login.component';
-import { SignupComponent } from './signup/signup.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { AboutComponent } from './about/about.component';
 import { TeamComponent } from './team/team.component';
 import { TransactionComponent } from './transaction/transaction.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { Ng2GoogleChartsModule } from 'ng2-google-charts';
-import {Ng2CarouselamosModule} from 'ng2-carouselamos';
 import { BudgetComponent } from './budget/budget.component';
 import { ArticlesComponent } from './articles/articles.component';
-//import { Ng2GoogleChartsModule } from 'ng2-google-charts';
-
-
-// const config = {
-//   issuer: 'https://dev-872814.oktapreview.com/oauth2/default',
-//   redirectUri: 'http://localhost:4200/home',
-//   clientId: '0oahconykz3JdCVDD0h7',
-//   scope: 'openid profile email',
-// };
+import { ChartsModule } from 'ng2-charts'
+import { AuthGuard } from './services/okta/authguard';
 
 @NgModule({
   declarations: [
@@ -53,8 +41,6 @@ import { ArticlesComponent } from './articles/articles.component';
     CarListComponent,
     CarEditComponent,
     HomeComponent,
-    LoginComponent,
-    SignupComponent,
     NavbarComponent,
     FooterComponent,
     AboutComponent,
@@ -76,17 +62,15 @@ import { ArticlesComponent } from './articles/articles.component';
     FormsModule,
     routes,
     HttpModule,
-    Ng2GoogleChartsModule,
-    Ng2CarouselamosModule,
     ReactiveFormsModule,
-    //Ng2GoogleChartsModule,
-    //OktaAuthModule.initAuth(config),
+    ChartsModule,
     OAuthModule.forRoot()
   ],
   providers: [CarService,
     GiphyService,
     TransactionService, 
     UserService,
+    AuthGuard,
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
   bootstrap: [AppComponent]
 })

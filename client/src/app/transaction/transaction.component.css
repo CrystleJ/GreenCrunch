@@ -1,36 +1,32 @@
-.navbar {
-    overflow: hidden;
-    background-color: #96AFBB;
-}
-
-.navbar a {
-    float: left;
-    font-size: 16px;
-    color: white;
+#title {
+    color: #96AFBB;
     text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
+    -webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */
+       -moz-animation: fadein 2s; /* Firefox < 16 */
+        -ms-animation: fadein 2s; /* Internet Explorer */
+         -o-animation: fadein 2s; /* Opera < 12.1 */
+            animation: fadein 2s;
+    font-size: 55px;
+
+}
+#select_cat {
+    width: 200px;
+    margin-left: 5px;
+    cursor:pointer;
+    color: black;
 }
 
 .dropdown {
     float: left;
-    overflow: hidden;
-}
-
-.dropdown .dropbtn {
     font-size: 16px;
     border: none;
     outline: none;
     color: white;
     padding: 14px 16px;
-    background-color: inherit;
     font-family: inherit;
     margin: 0;
-}
-
-.navbar a:hover,
-.dropdown:hover .dropbtn {
-    background-color: #E9CEC8;
+    background-color: #96AFBB;
+    width: 100%;
 }
 
 .dropdown-content {
@@ -80,6 +76,13 @@ button:hover {
 .cancelbtn {
     padding: 14px 20px;
     background-color: #EE7642;
+    float: right;
+    margin-right: 10px;
+}
+
+.signupbtn {
+    float: left;
+    margin-left: 10px;
 }
 
 
@@ -87,8 +90,11 @@ button:hover {
 
 .cancelbtn,
 .signupbtn {
-    float: left;
-    width: 50%;
+    width: 60%;
+}
+
+#add_td {
+    width: 250px;
 }
 
 
@@ -181,4 +187,33 @@ input[type=date]:focus,
 input[type=number]:focus {
     background-color: #ddd;
     outline: none;
+}
+
+@keyframes fadein {
+    from { opacity: 0; font-size: 30px; }
+    to   { opacity: 1; font-size: 55px;}
+}
+
+/* Firefox < 16 */
+@-moz-keyframes fadein {
+    from { opacity: 0; font-size: 30px;}
+    to   { opacity: 1; }font-size: 55px;
+}
+
+/* Safari, Chrome and Opera > 12.1 */
+@-webkit-keyframes fadein {
+    from { opacity: 0; font-size: 30px;}
+    to   { opacity: 1; font-size: 55px;}
+}
+
+/* Internet Explorer */
+@-ms-keyframes fadein {
+    from { opacity: 0; font-size: 30px;}
+    to   { opacity: 1; font-size: 55px;}
+}
+
+/* Opera < 12.1 */
+@-o-keyframes fadein {
+    from { opacity: 0; font-size: 30px;}
+    to   { opacity: 1; font-size: 55px;}
 }
