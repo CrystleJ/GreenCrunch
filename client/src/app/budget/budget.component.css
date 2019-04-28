@@ -7,6 +7,23 @@
     width: 100%;
 }
 
+.text-uppercase {
+    text-transform: uppercase;
+    font-size: 50px;
+}
+
+.text-upper {
+    text-transform: uppercase;
+    font-size: 50px;
+    color: #506F7E;
+}
+
+.text-uppers {
+    text-transform: uppercase;
+    font-size: 50px;
+    color: #8C5E6F;
+}
+
 #myModal {
     display: none;
 }
@@ -14,6 +31,7 @@
 td {
     width: 250px;
 }
+
 
 /* The Modal (background) */
 
@@ -55,23 +73,12 @@ table {
     width: 100%;
 }
 
-/* td,
-th {
-    border: 1px solid #dddddd;
-    text-align: left;
-    padding: 8px;
-} */
-
-/* tr:nth-child(even) {
-    background-color: #dddddd;
-} */
-
 html,
 body {
     margin: 0 auto;
     padding: 0 auto;
     font-family: "Times New Roman", arial, Verdana;
-    color: #817a53;
+    color: white;
     background: #d8d6cb;
 }
 
@@ -149,7 +156,7 @@ div {
     margin: 0;
     padding: 0;
     font-size: 14px;
-    color: #333333;
+    color: white;
 }
 
 #labels li,
@@ -1045,7 +1052,9 @@ div {
 Css orignal https://codepen.io/jlalovi/details/bIyAr
 ************************/
 
+
 /* @import url(https://fonts.googleapis.com/css?family=Ubuntu:400,700); */
+
 * {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -1234,7 +1243,7 @@ span {
 /******************************************
 ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓
 ESTILOS PROPIOS DE LOS GRÄFICOS
-↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ 
+↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑
 GRAFICO LINEAL
 ******************************************/
 
@@ -1631,7 +1640,14 @@ button:hover {
 
 .cancelbtn {
     padding: 14px 20px;
-    background-color: #E9CEC8;
+    background-color: #EE7642;
+    float: right;
+    margin-right: 10px;
+}
+
+.signupbtn {
+    float: left;
+    margin-left: 10px;
 }
 
 
@@ -1639,8 +1655,7 @@ button:hover {
 
 .cancelbtn,
 .signupbtn {
-    float: left;
-    width: 50%;
+    width: 60%;
 }
 
 
@@ -1718,10 +1733,10 @@ input[type=text],
 input[type=date],
 input[type=number] {
     width: 90%;
-    padding: 15px;
+    padding-left: 5px;
     margin: 5px 0 15px 0;
     display: inline-block;
-    border: none;
+    border: 1px black solid;
     background: #f1f1f1;
 }
 
@@ -1731,139 +1746,140 @@ input[type=number] {
 input[type=text]:focus,
 input[type=date]:focus,
 input[type=number]:focus {
-    background-color: #ddd;
+    background-color: white;
     outline: none;
 }
 
-
-
 .bar-graph {
-  padding: 0;
-  width: 100%;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: flex-end;
-      -ms-flex-align: end;
-          align-items: flex-end;
-  height: 425px;
-  margin: 0;
+    padding: 0;
+    width: 100%;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-align-items: flex-end;
+    -ms-flex-align: end;
+    align-items: flex-end;
+    height: 425px;
+    margin: 0;
 }
 
 .bar-graph li {
-  display: block;
-  padding: 1.5625rem 0;
-  position: relative;
-  text-align: center;
-  vertical-align: bottom;
-  border-radius: 4px 4px 0 0;
-  max-width: 20%;
-  height: 100%;
-  margin: 0 1.8% 0 0;
-  -webkit-flex: 1 1 15%;
-      -ms-flex: 1 1 15%;
-          flex: 1 1 15%;
+    display: block;
+    padding: 1.5625rem 0;
+    position: relative;
+    text-align: center;
+    vertical-align: bottom;
+    border-radius: 4px 4px 0 0;
+    max-width: 20%;
+    height: 100%;
+    margin: 0 1.8% 0 0;
+    -webkit-flex: 1 1 15%;
+    -ms-flex: 1 1 15%;
+    flex: 1 1 15%;
 }
 
 .bar-graph .bar-graph-axis {
-  -webkit-flex: 1 1 8%;
-      -ms-flex: 1 1 8%;
-          flex: 1 1 8%;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-justify-content: space-between;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+    -webkit-flex: 1 1 8%;
+    -ms-flex: 1 1 8%;
+    flex: 1 1 8%;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-justify-content: space-between;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
 }
 
 .bar-graph .bar-graph-label {
-  margin: 0;
-  background-color: none;
-  color: #8a8a8a;
-  position: relative;
+    margin: 0;
+    background-color: none;
+    color: #8a8a8a;
+    position: relative;
 }
 
-@media print, screen and (min-width: 40em) {
-  .bar-graph .bar-graph-label:before, .bar-graph .bar-graph-label:after {
-    content: "";
-    position: absolute;
-    border-bottom: 1px dashed #8a8a8a;
-    top: 0;
-    left: 0;
-    height: 50%;
-    width: 20%;
-  }
+@media print,
+screen and (min-width: 40em) {
+    .bar-graph .bar-graph-label:before,
+    .bar-graph .bar-graph-label:after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 50%;
+        width: 20%;
+    }
 }
 
-@media print, screen and (min-width: 40em) and (min-width: 64em) {
-  .bar-graph .bar-graph-label:before, .bar-graph .bar-graph-label:after {
-    width: 30%;
-  }
+@media print,
+screen and (min-width: 40em) and (min-width: 64em) {
+    .bar-graph .bar-graph-label:before,
+    .bar-graph .bar-graph-label:after {
+        width: 30%;
+    }
 }
 
-@media print, screen and (min-width: 40em) {
-  .bar-graph .bar-graph-label:after {
-    left: auto;
-    right: 0;
-  }
+@media print,
+screen and (min-width: 40em) {
+    .bar-graph .bar-graph-label:after {
+        left: auto;
+        right: 0;
+    }
 }
 
 .bar-graph .percent {
-  letter-spacing: -3px;
-  opacity: 0.4;
-  width: 100%;
-  font-size: 1.875rem;
-  position: absolute;
+    color: white;
+    width: 100%;
+    font-size: 1.875rem;
+    position: absolute;
 }
 
-@media print, screen and (min-width: 40em) {
-  .bar-graph .percent {
-    font-size: 3.875rem;
-  }
+@media print,
+screen and (min-width: 40em) {
+    .bar-graph .percent {
+        font-size: 3.875rem;
+    }
 }
 
 .bar-graph .percent span {
-  font-size: 1.875rem;
+    font-size: 1.875rem;
 }
 
 .bar-graph .description {
-  font-weight: 800;
-  opacity: 0.5;
-  text-transform: uppercase;
-  width: 100%;
-  font-size: 14px;
-  bottom: 20px;
-  position: absolute;
-  font-size: 1rem;
-  overflow: hidden;
+    font-weight: 800;
+    color: white;
+    text-transform: uppercase;
+    width: 100%;
+    font-size: 14px;
+    bottom: 15px;
+    position: absolute;
+    font-size: 1rem;
+    overflow: hidden;
 }
 
 .bar-graph .bar.primary {
-  border: 1px solid #1779ba;
-  background: linear-gradient(#2196e3, #1779ba 70%);
+    border: 1px solid #1779ba;
+    background: linear-gradient(#2196e3, #1779ba 70%);
 }
 
 .bar-graph .bar.secondary {
-  border: 1px solid #767676;
-  background: linear-gradient(#909090, #767676 70%);
+    border: 1px solid #767676;
+    background: linear-gradient(#909090, #767676 70%);
 }
 
 .bar-graph .bar.success {
-  border: 1px solid #3adb76;
-  background: linear-gradient(#65e394, #3adb76 70%);
+    border: 1px solid #3adb76;
+    background: linear-gradient(#65e394, #3adb76 70%);
 }
 
 .bar-graph .bar.warning {
-  border: 1px solid #ffae00;
-  background: linear-gradient(#ffbe33, #ffae00 70%);
+    border: 1px solid #ffae00;
+    background: linear-gradient(#ffbe33, #ffae00 70%);
 }
 
 .bar-graph .bar.alert {
-  border: 1px solid #cc4b37;
-  background: linear-gradient(#d67060, #cc4b37 70%);
+    border: 1px solid #cc4b37;
+    background: linear-gradient(#d67060, #cc4b37 70%);
 }
-

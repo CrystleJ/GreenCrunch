@@ -41,6 +41,7 @@ export class HomeComponent implements OnInit {
   showSlides(n) {
     console.log("hello this is showSlides  "+n);
     console.log("slideIndex="+this.slideIndex);
+
     var i;
     var slides = document.getElementsByClassName("mySlides");
     var dots = document.getElementsByClassName("dot");
@@ -55,6 +56,12 @@ export class HomeComponent implements OnInit {
     (slides[this.slideIndex-1] as HTMLElement).style.display = "block"; 
     dots[this.slideIndex-1].className += " active";
     console.log((slides[this.slideIndex-1] as HTMLElement).style.display);
+    if(this.slideIndex == 3) {
+      this.slideIndex = 1;
+      setTimeout(() => {this.showSlides(this.slideIndex);}, 3000);
+    }
+    else
+      setTimeout(() => {this.showSlides(this.slideIndex++);}, 3000); 
   }
 
 }

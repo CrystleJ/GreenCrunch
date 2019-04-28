@@ -50,7 +50,7 @@ section {
 
 
 /*
-     On Scroll Animations 
+     On Scroll Animations
  ------------------------------------------*/
 
 
@@ -59,7 +59,7 @@ section {
 
 
 /*
-     Spacing & Alignment 
+     Spacing & Alignment
  ------------------------------------------*/
 
 .roomy-100 {
@@ -118,11 +118,14 @@ section {
 }
 
 .text-grey {
-    color: #757373 !important;;
+    color: #757373 !important;
+    ;
     ;
 }
+
 .text-light-grey {
-    color: #AD9E9E !important;;
+    color: #AD9E9E !important;
+    ;
     ;
 }
 
@@ -182,14 +185,19 @@ section {
 }
 
 .bg-light-pink {
-    background-color: #FAF4F2;
+    background-color: #F6DE85;
 }
+
 .bg-light-green {
     background-color: #B3DACA;
 }
 
 .bg-light-purple {
     background-color: #F2E4F6;
+}
+
+.bg-light-orange {
+    background-color: #EAE1DD;
 }
 
 img {
@@ -532,6 +540,7 @@ ul {
 .m-l-15 {
     margin-left: 15px;
 }
+
 .m-l-50 {
     margin-left: 50px;
 }
@@ -1065,6 +1074,7 @@ nav.navbar.bootsnav ul.nav li a:hover {
     position: relative;
     padding-top: 300px;
     width: 100%;
+    padding-bottom: 100px;
 }
 
 .main_home .home_text h2 {
@@ -3170,10 +3180,10 @@ th {
         text-decoration: underline;
     }
     a[href]:after {
-        content: " (" attr(href) ")";
+        content: " ("attr(href) ")";
     }
     abbr[title]:after {
-        content: " (" attr(title) ")";
+        content: " ("attr(title) ")";
     }
     a[href^="#"]:after,
     a[href^="javascript:"]:after {
@@ -4777,7 +4787,6 @@ abbr[data-original-title] {
 .initialism {
     font-size: 190%;
     text-transform: uppercase;
-    
 }
 
 blockquote {

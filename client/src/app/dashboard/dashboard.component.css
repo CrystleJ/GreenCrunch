@@ -8,6 +8,13 @@
     height: 50%;
 }
 
+.business {
+    /*background: url(../images/business-bg.jpg) no-repeat top center;*/
+    background-size: cover;
+    position: relative;
+    padding-left: 100px;
+}
+
 .score {
     font-size: 72px;
 }
@@ -20,33 +27,41 @@
 
 .scoreTitle {
     color: rgb(228, 220, 222);
+    font-size: 20px;
 }
 
 #myModal {
     display: none;
 }
 
-#avgscore {
-    margin-left: 3%;
-}
-
 
 
 /* The Modal (background) */
+
 .modal {
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    padding-top: 100px; /* Location of the box */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
+    padding-top: 100px;
+    /* Location of the box */
     left: 0;
     top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black w/ opacity */
 }
 
+
 /* Modal Content */
+
 .modal-content {
     background-color: #fefefe;
     margin: auto;
@@ -93,8 +108,8 @@ div {
 
 #wrapper {
     position: relative;
-    top: 290%;
-    left: 120%;
+    top: 170%;
+    left: 75%;
     width: 740px;
     height: 380px;
     margin: -340px -370px;
@@ -1051,7 +1066,9 @@ div {
 Css orignal https://codepen.io/jlalovi/details/bIyAr
 ************************/
 
+
 /* @import url(https://fonts.googleapis.com/css?family=Ubuntu:400,700); */
+
 * {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -1315,7 +1332,7 @@ GRAFICO LINEAL
 }
 
 [data-valor='23']:after {
-    content: '+' attr(data-valor) '%';
+    content: '+'attr(data-valor) '%';
     position: absolute;
     right: -2.7rem;
     top: -1.7rem;
@@ -1549,9 +1566,136 @@ BAR-CHART
     height: 520%;
 }
 
+.bar-graph {
+    padding: 0;
+    width: 100%;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-align-items: flex-end;
+    -ms-flex-align: end;
+    align-items: flex-end;
+    height: 425px;
+    margin: 0;
+}
 
-/*****************************
-USO NÚMEROS MÁGICOS EN ALGUNOS VALORES
-POR NO PARARME A ESTUDIAR A FONDO
-EL CSS DEL PEN ORIGINAL
-*****************************/
+.bar-graph li {
+    display: block;
+    padding: 1.5625rem 0;
+    position: relative;
+    text-align: center;
+    vertical-align: bottom;
+    border-radius: 4px 4px 0 0;
+    max-width: 20%;
+    height: 100%;
+    margin: 0 1.8% 0 0;
+    -webkit-flex: 1 1 15%;
+    -ms-flex: 1 1 15%;
+    flex: 1 1 15%;
+}
+
+.bar-graph .bar-graph-axis {
+    -webkit-flex: 1 1 8%;
+    -ms-flex: 1 1 8%;
+    flex: 1 1 8%;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-justify-content: space-between;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+}
+
+.bar-graph .bar-graph-label {
+    margin: 0;
+    background-color: none;
+    color: #8a8a8a;
+    position: relative;
+}
+
+@media print,
+screen and (min-width: 40em) {
+    .bar-graph .bar-graph-label:before,
+    .bar-graph .bar-graph-label:after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 50%;
+        width: 20%;
+    }
+}
+
+@media print,
+screen and (min-width: 40em) and (min-width: 64em) {
+    .bar-graph .bar-graph-label:before,
+    .bar-graph .bar-graph-label:after {
+        width: 30%;
+    }
+}
+
+@media print,
+screen and (min-width: 40em) {
+    .bar-graph .bar-graph-label:after {
+        left: auto;
+        right: 0;
+    }
+}
+
+.bar-graph .percent {
+    color: white;
+    width: 100%;
+    font-size: 1.875rem;
+    position: absolute;
+}
+
+@media print,
+screen and (min-width: 40em) {
+    .bar-graph .percent {
+        font-size: 3.875rem;
+    }
+}
+
+.bar-graph .percent span {
+    font-size: 1.875rem;
+}
+
+.bar-graph .description {
+    font-weight: 800;
+    color: white;
+    text-transform: uppercase;
+    width: 100%;
+    font-size: 14px;
+    bottom: 15px;
+    position: absolute;
+    font-size: 1rem;
+    overflow: hidden;
+}
+
+.bar-graph .bar.primary {
+    border: 1px solid #1779ba;
+    background: linear-gradient(#2196e3, #1779ba 70%);
+}
+
+.bar-graph .bar.secondary {
+    border: 1px solid #767676;
+    background: linear-gradient(#909090, #767676 70%);
+}
+
+.bar-graph .bar.success {
+    border: 1px solid #3adb76;
+    background: linear-gradient(#65e394, #3adb76 70%);
+}
+
+.bar-graph .bar.warning {
+    border: 1px solid #ffae00;
+    background: linear-gradient(#ffbe33, #ffae00 70%);
+}
+
+.bar-graph .bar.alert {
+    border: 1px solid #cc4b37;
+    background: linear-gradient(#d67060, #cc4b37 70%);
+}

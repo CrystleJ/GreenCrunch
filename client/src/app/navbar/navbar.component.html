@@ -1,25 +1,10 @@
 <body data-spy="scroll" data-target="#navbar-menu" data-offset="110">
 
-
-    <!-- Preloader 
-    <div id="loading">
-        <div id="loading-center">
-            <div id="loading-center-absolute">
-                <div class="object" id="object_one"></div>
-                <div class="object" id="object_two"></div>
-                <div class="object" id="object_three"></div>
-                <div class="object" id="object_four"></div>
-            </div>
-        </div>
-    </div>
-    <--End off Preloader -->
-
-
     <div class="culmn">
         <!--Home page style-->
 
 
-        <nav class="navbar navbar-default bootsnav navbar-fixed no-background white">
+        <nav class="navbar navbar-default bootsnav navbar-fixed no-background white" style="background-color:rgba(0, 0, 0, 0.75);">
             <!-- Start Top Search -->
             <div class="top-search">
                 <div class="container">
@@ -55,17 +40,17 @@
 
                 <!-- navbar menu -->
                 <div class="collapse navbar-collapse" id="navbar-menu">
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><a *ngIf="!givenName" href="/home">Home</a></li>
+                    <ul class="nav navbar-nav navbar-right" >
+                        <li><a *ngIf="!givenName" href="/home" style="color:blanchedalmond;">Home</a></li>
                         <!----<li><a href="#contact ">Contact</a></li>-->
-                        <li><a *ngIf="!givenName" (click)="login()" style="cursor: pointer;">Login/Register</a>
-                        <li><a *ngIf="givenName" href="/dashboard">Dashboard</a></li>
-                        <li><a *ngIf="givenName" href="/transaction">Transaction</a></li>
-                         <li><a *ngIf="givenName" href="/budget">Budgets</a></li>
-                         <li><a *ngIf="givenName" href="/articles">Articles</a></li>
-                        <li><a href="../about/">About</a></li>
-                        <li><a href="../team/">Team</a></li>
-                        <li><a *ngIf="givenName" (click)="logout()">Logout</a>
+                        <li><a *ngIf="!givenName" (click)="login()" style="cursor: pointer;color:blanchedalmond;">Login/Register</a>
+                        <li><a *ngIf="givenName" href="/dashboard" style="color:blanchedalmond;">Dashboard</a></li>
+                        <li><a *ngIf="givenName" href="/transaction" style="color:blanchedalmond;">Transaction</a></li>
+                         <li><a *ngIf="givenName" href="/budget" style="color:blanchedalmond;">Budgets</a></li>
+                         <li><a *ngIf="givenName" href="/articles" style="color:blanchedalmond;">Articles</a></li>
+                        <li><a href="../about/" style="color:blanchedalmond;">About</a></li>
+                        <li><a href="../team/" style="color:blanchedalmond;">Team</a></li>
+                        <li><a *ngIf="givenName" (click)="logout()" style="color:blanchedalmond;">Logout</a></li>
 
                     </ul>
                 </div>

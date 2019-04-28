@@ -26,6 +26,9 @@ export class TransactionComponent implements OnInit {
   isEdit: boolean = false;
   checkID: number;
 
+  selected: any;
+  categories = ["Bill&utilities", "Shopping", "Food&drinks", "Groceries", "Entertainment", "Misc"];
+
   constructor(
     private transactionService: TransactionService,
     private oauthService: OAuthService,
@@ -153,17 +156,12 @@ export class TransactionComponent implements OnInit {
     );
   }
 
-  /*public pieChart: GoogleChartInterface = {
-    chartType: 'PieChart',
-    dataTable: [
-      ['Task', 'Hours per Day'],
-      ['Work',     11],
-      ['Eat',      2],
-      ['Commute',  2],
-      ['Watch TV', 2],
-      ['Sleep',    7]
-    ],
-    //opt_firstRowIsData: true,
-    options: {'title': 'Tasks'},
-  };*/
+  onOptionsSelected() {
+    console.log(this.selected);
+    if(this.selected == "All") {
+      this.reloadData();
+    } else { 
+      this.transactions = this.transactions.filter(t=>t.category ==this.selected);
+    }
+}
 }
