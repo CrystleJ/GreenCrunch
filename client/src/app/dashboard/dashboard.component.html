@@ -12,32 +12,32 @@
 
     <div class="container ">
         <div class="row ">
-                        <div class="col-md-20 ">
+            <div class="col-md-20 ">
 
-            <div class="main_business m-l-50">
-                <div class="col-md-4">
-                    <div class="business_item">
-                        <h2 class="text-grey"><strong>Stay up to date</strong> Personalized for you</h2>
+                <div class="main_business m-l-50">
+                    <div class="col-md-4">
+                        <div class="business_item">
+                            <h2 class="text-grey"><strong>Stay up to date</strong> Personalized for you</h2>
 
-                        <p class="m-top-20" class="text-light-grey">Finally there is one simple and organized place for your bills. Track all your bills on the go in GreenCrunch from credit cards to utilities, mortgage payment, and personal goals. It’s all in one place and easy to manage.</p>
+                            <p class="m-top-20" class="text-light-grey">Finally there is one simple and organized place for your bills. Track all your bills on the go in GreenCrunch from credit cards to utilities, mortgage payment, and personal goals. It’s all in one place and easy to manage.</p>
 
-                        <ul> 
-                            <li><i class="fa fa-arrow-circle-right "></i> See bills and money in one place</li>
-                            <li><i class="fa fa-arrow-circle-right "></i> Manage transactions like never before</li>
-                            <li><i class="fa fa-arrow-circle-right "></i> Create budgets and reach your saving goal</li>
-                        </ul>
+                            <ul>
+                                <li><i class="fa fa-arrow-circle-right "></i> See bills and money in one place</li>
+                                <li><i class="fa fa-arrow-circle-right "></i> Manage transactions like never before</li>
+                                <li><i class="fa fa-arrow-circle-right "></i> Create budgets and reach your saving goal</li>
+                            </ul>
 
-                        <div class="business_btn m-top-50 ">
-                            <a href="/budget" class="btn btn-default m-top-20 "> Create Budgets</a>
+                            <div class="business_btn m-top-50 ">
+                                <a href="/budget" class="btn btn-default m-top-20 "> Create Budgets</a>
+                            </div>
+
                         </div>
-
                     </div>
-                </div>
 
-                <div class="col-md-8 m-l-15">
-                    <div class="business_item ">
-                        <div class="business_img ">
-                            <div id="q2_2010">
+                    <div class="col-md-8 m-l-15">
+                        <div class="business_item ">
+                            <div class="business_img ">
+                                <div id="q2_2010">
                                     <div id="q1_2010">
                                         <div id="q4_2009">
                                             <div id="q3_2009">
@@ -124,40 +124,40 @@
                                 </div>
                                 <!--q2_2010-->
 
+                            </div>
                         </div>
                     </div>
-                </div>
 
+                </div>
             </div>
         </div>
     </div>
-</div>
 </section>
 <!--End off Home Sections-->
 <section id="business " class="business bg-light-blue roomy-50 ">
 
     <!-- <div class="container "> -->
-        <div class='creditscore' id='avgscore'>
-            <h1 class="score">{{avgScore}}</h1>
-            <h3 class="scoreTitle">National FICO Score Average</h3>
-        </div>
+    <div class='creditscore' id='avgscore'>
+        <h1 class="score">{{avgScore}}</h1>
+        <h3 class="scoreTitle">National FICO Score Average</h3>
+    </div>
 
-        <div class='creditscore' *ngIf='!creditScoreExists' >
-            loading...
-        </div>
+    <div class='creditscore' *ngIf='!creditScoreExists'>
+        loading...
+    </div>
 
-        <div class='creditscore' id='userscore' *ngIf='creditScoreExists'>
-            <h1 class="score" *ngIf="greaterThan()" style='color: green; font-size: 100px;'>{{creditScore}}</h1>
-            <h1 class="score" *ngIf="!greaterThan()" style='color: red; font-size: 100px;'>{{creditScore}}</h1>
-            <h1 style='color:white'>Your Score</h1>
-        </div>
+    <div class='creditscore' id='userscore' *ngIf='creditScoreExists'>
+        <h1 class="score" *ngIf="greaterThan()" style='color: green; font-size: 100px;'>{{creditScore}}</h1>
+        <h1 class="score" *ngIf="!greaterThan()" style='color: red; font-size: 100px;'>{{creditScore}}</h1>
+        <h1 style='color:white'>Your Score</h1>
+    </div>
 
-        <div class='creditscore' id='avgCAscore'>
-            <h1 class="score">{{avgCAScore}}</h1>
-            <h3 class="scoreTitle">California's Avergae FICO Score</h3>
-        </div>
+    <div class='creditscore' id='avgCAscore'>
+        <h1 class="score">{{avgCAScore}}</h1>
+        <h3 class="scoreTitle">California's Avergae FICO Score</h3>
+    </div>
 
-        <!-- <div class="row ">
+    <!-- <div class="row ">
             <div class="main_business ">
                 <div class="col-md-5 ">
                     <div class="business_item sm-m-top-50 ">
@@ -256,7 +256,7 @@
 </section>
 <!--End off Home Sections-->
 
-<section id="home " class="home bg-pink fix " style="padding-left: 18%; padding-top:400px;">
+<section id="home " class="home bg-light-orange fix " style="padding-left: 18%; padding-top:400px;">
 
     <div class="container ">
         <div class="row ">
@@ -300,15 +300,16 @@
         <div id="myModal" class="modal">
             <!-- Modal content -->
             <div class="modal-content" style="width: 50%">
-                <form id="acctForm" [formGroup]="addAcctForm" (ngSubmit) = "onSubmit()">
-                <div class="form-group">
-                    <label for="acctnum" class="control-label">Enter the Account Number you would like GreenCrunch to track:</label><br>
-                    <input type="text" id="acctnum" class="form-control" formControlName='acctnum' name="acctnum" required>
-                </div>
-                <button type="submit" [disabled]="!addAcctForm.valid">Continue</button>
+                <form id="acctForm" [formGroup]="addAcctForm" (ngSubmit)="onSubmit()">
+                    <div class="form-group">
+                        <label for="acctnum" class="control-label">Enter the Account Number you would like GreenCrunch to
+              track:</label><br>
+                        <input type="text" id="acctnum" class="form-control" formControlName='acctnum' name="acctnum" required>
+                    </div>
+                    <button type="submit" [disabled]="!addAcctForm.valid">Continue</button>
                 </form>
             </div>
-        
+
         </div>
 
         <!--- <div class="home_btns m-top-40 ">

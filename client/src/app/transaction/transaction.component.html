@@ -9,13 +9,23 @@
 
                 <div class="dropdown">
                     <button class="dropbtn">Category
-            <i class="fa fa-caret-down"></i>
+            <i class="my-Ctrl">
+
+              <select ng-model="params.name">
+                <option value="pa"></option>
+                <option value="ws">Bills/Utilities</option>
+                <option value="pn">Shopping</option>
+                <option value="ws">Food/Drinks</option>
+                <option value="pn">Groceries</option>
+                <option value="ws">Entertainment</option>
+                <option value="pn">Misc</option>
+              </select>
+
+
+
+            </i>
           </button>
-                    <div class="dropdown-content">
-                        <a href="#">Link 1</a>
-                        <a href="#">Link 2</a>
-                        <a href="#">Link 3</a>
-                    </div>
+
                 </div>
             </div>
             <table class="table table-striped table-dark">
